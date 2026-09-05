@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 180" width="320" height="180">
+<defs><radialGradient id="s2g" cx=".35" cy=".3" r=".8"><stop offset="0" stop-color="#6b6f7a"/><stop offset=".45" stop-color="#2a2d36"/><stop offset="1" stop-color="#0a0b0e"/></radialGradient>
+<linearGradient id="s2bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f7f8fa"/><stop offset="1" stop-color="#e6e9ef"/></linearGradient>
+<linearGradient id="s2skin" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f6d3bb"/><stop offset="1" stop-color="#dfae8e"/></linearGradient>
+<clipPath id="s2c"><circle cx="140" cy="92" r="44"/></clipPath></defs>
+<rect width="320" height="180" fill="url(#s2bg)"/>
+<ellipse cx="150" cy="160" rx="120" ry="8" fill="#000" opacity=".1"/>
+<!-- palm from the right -->
+<path d="M320,40 L250,40 C215,40 200,60 200,92 C200,124 215,144 250,144 L320,144 Z" fill="url(#s2skin)"/>
+<!-- index finger over the top -->
+<path d="M240,44 C215,40 180,40 150,46 C130,50 120,60 124,70 C130,78 150,70 165,68 C190,66 215,72 240,74 Z" fill="url(#s2skin)" stroke="#dfae8e" stroke-width="1"/>
+<!-- thumb under -->
+<path d="M240,140 C215,146 180,146 150,140 C132,136 122,126 128,116 C136,110 152,118 168,120 C192,122 216,116 240,112 Z" fill="url(#s2skin)" stroke="#dfae8e" stroke-width="1"/>
+<!-- globe -->
+<circle cx="140" cy="92" r="44" fill="url(#s2g)"/>
+<g clip-path="url(#s2c)" fill="#b5b9c4" opacity=".9" transform="translate(140 92) scale(.52)">
+  <path d="M-52,-28 c6,-12 22,-18 34,-12 c8,4 6,14 14,16 c10,2 14,-8 24,-4 c8,4 4,16 -2,22 c-10,10 -30,6 -40,16 c-6,6 -14,4 -18,-4 c-4,-8 -16,-8 -20,-16 c-4,-8 4,-14 8,-18z"/>
+  <path d="M-10,12 c10,-6 22,-2 28,8 c4,8 -2,20 -12,24 c-8,4 -16,-2 -18,-10 c-2,-8 -6,-16 2,-22z"/>
+  <path d="M30,-46 c8,-4 18,0 22,8 c2,6 -4,10 -8,12 c-8,2 -18,-2 -18,-10 c0,-4 0,-8 4,-10z"/>
+  <path d="M40,20 c8,-2 18,4 16,12 c-2,8 -14,10 -20,6 c-6,-4 -4,-16 4,-18z"/>
+  <path d="M-72,10 c6,-6 14,-2 16,6 c2,8 -6,14 -12,10 c-6,-4 -8,-12 -4,-16z"/></g>
+<circle cx="140" cy="92" r="44" fill="none" stroke="#fff" stroke-opacity=".4"/>
+<circle cx="126" cy="76" r="14" fill="#fff" opacity=".25"/>
+<!-- fingertip pads in front -->
+<path d="M150,46 C140,50 128,58 124,70 C128,72 136,70 140,66 C142,58 146,50 150,46 Z" fill="url(#s2skin)" opacity=".9"/>
+<path d="M150,140 C140,136 128,128 128,116 C132,114 138,116 142,120 C144,128 146,136 150,140 Z" fill="url(#s2skin)" opacity=".9"/>
+<!-- stand hint -->
+<path d="M30,166 L120,166" stroke="#1c1e24" stroke-width="8" stroke-linecap="round" opacity=".85"/>
+</svg>

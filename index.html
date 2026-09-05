@@ -1,0 +1,425 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>COSMOS Magnetic Levitating Globe Lamp | A Brighter World at Home</title>
+  <meta name="description" content="COSMOS is a magnetic levitating globe lamp with a soft LED glow. A floating globe that inspires curiosity, brings calm to your space, and reminds you how extraordinary our world is.">
+  <meta property="og:title" content="COSMOS Magnetic Levitating Globe Lamp">
+  <meta property="og:description" content="A floating globe that inspires curiosity and brings calm to your space.">
+  <meta property="og:image" content="assets/hero-globe.svg">
+  <meta name="theme-color" content="#0f172a">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- ===== Announcement bar ===== -->
+  <div class="announce">
+    <div class="container announce__inner">
+      <ul class="announce__list" aria-label="Store highlights">
+        <li>Free worldwide shipping</li>
+        <li aria-hidden="true" class="announce__sep">|</li>
+        <li>30-day money-back guarantee</li>
+        <li aria-hidden="true" class="announce__sep">|</li>
+        <li><strong>A brighter world awaits</strong></li>
+      </ul>
+      <div class="currency">
+        <button class="currency__btn" id="currencyBtn" type="button" aria-haspopup="listbox" aria-expanded="false">
+          <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.8 3 2.8 15 0 18M12 3c-2.8 3-2.8 15 0 18"/></svg>
+          <span id="currencyLabel">UK (GBP)</span>
+          <svg class="ico ico--chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <ul class="currency__menu" id="currencyMenu" role="listbox" hidden>
+          <li role="option" data-currency="GBP" aria-selected="true">🇬🇧 UK (GBP)</li>
+          <li role="option" data-currency="USD">🇺🇸 US (USD)</li>
+          <li role="option" data-currency="EUR">🇪🇺 EU (EUR)</li>
+          <li role="option" data-currency="AUD">🇦🇺 AU (AUD)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== Header ===== -->
+  <header class="header" id="top">
+    <div class="container header__inner">
+      <a class="logo" href="#top" aria-label="COSMOS home">COSMOS</a>
+      <nav class="nav" aria-label="Primary">
+        <a href="#top">Home</a>
+        <a href="#shop">Shop</a>
+        <a href="#about">About</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <div class="header__actions">
+        <button class="iconbtn" type="button" id="searchBtn" aria-label="Search">
+          <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        </button>
+        <button class="iconbtn" type="button" id="accountBtn" aria-label="Account">
+          <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+        </button>
+        <button class="iconbtn iconbtn--cart" type="button" id="cartBtn" aria-label="Open cart">
+          <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 8h12l-1 12H7L6 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+          <span class="cart-count" id="cartCount" hidden>0</span>
+        </button>
+        <button class="iconbtn burger" type="button" id="menuBtn" aria-label="Open menu" aria-expanded="false">
+          <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </div>
+    </div>
+    <nav class="mobile-nav" id="mobileNav" hidden aria-label="Mobile">
+      <a href="#top">Home</a><a href="#shop">Shop</a><a href="#about">About</a><a href="#reviews">Reviews</a><a href="#faq">FAQ</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- ===== Hero ===== -->
+    <section class="hero">
+      <div class="container hero__inner">
+        <div class="hero__copy">
+          <p class="eyebrow">More than a decoration</p>
+          <h1 class="hero__title">A Brighter<br>Perspective</h1>
+          <p class="hero__lead">A floating globe that inspires curiosity, brings calm to your space, and reminds you how extraordinary our world is.</p>
+          <ul class="hero__perks">
+            <li>
+              <svg class="ico ico--lg" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 6c-1.5-1.5-4-2-8-2v14c4 0 6.5.5 8 2 1.5-1.5 4-2 8-2V4c-4 0-6.5.5-8 2z"/><path d="M12 6v14"/></svg>
+              <span>Educational<br>&amp; Inspiring</span>
+            </li>
+            <li>
+              <svg class="ico ico--lg" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+              <span>Soothing<br>LED Light</span>
+            </li>
+            <li>
+              <svg class="ico ico--lg" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11 12 3l9 8"/><path d="M5 10v10h5v-6h4v6h5V10"/></svg>
+              <span>A Unique<br>Gift Idea</span>
+            </li>
+          </ul>
+        </div>
+        <div class="hero__visual">
+          <img class="hero__img" src="assets/hero-globe.svg" alt="COSMOS levitating globe lamp with a glowing blue and pink LED ring" width="600" height="600" fetchpriority="high">
+        </div>
+        <div class="hero__tag" aria-hidden="true">
+          <span>A smaller<br>world</span>
+          <span>A brighter<br>you</span>
+          <i></i>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Product ===== -->
+    <section class="product" id="shop">
+      <div class="container">
+        <div class="product__card">
+          <div class="gallery">
+            <ul class="gallery__thumbs" id="thumbs" aria-label="Product images">
+              <li><button type="button" class="thumb" data-index="0" aria-label="Silver"><img src="assets/globe-silver.svg" alt=""></button></li>
+              <li><button type="button" class="thumb" data-index="1" aria-label="Pink"><img src="assets/globe-pink.svg" alt=""></button></li>
+              <li><button type="button" class="thumb" data-index="2" aria-label="Aqua"><img src="assets/globe-aqua.svg" alt=""></button></li>
+              <li><button type="button" class="thumb is-active" data-index="3" aria-label="Black" aria-current="true"><img src="assets/globe-black.svg" alt=""></button></li>
+              <li><button type="button" class="thumb" data-index="4" aria-label="Midnight"><img src="assets/globe-midnight.svg" alt=""></button></li>
+              <li><button type="button" class="thumb" data-index="5" aria-label="Gold"><img src="assets/globe-gold.svg" alt=""></button></li>
+            </ul>
+            <div class="gallery__main">
+              <img id="mainImage" src="assets/globe-black.svg" alt="COSMOS Magnetic Levitating Globe Lamp in Black" width="600" height="600">
+            </div>
+          </div>
+
+          <form class="buybox" id="buyForm" novalidate>
+            <h2 class="buybox__title">COSMOS Magnetic Levitating Globe Lamp</h2>
+            <p class="buybox__sub">Education Novelty Ball Light Desk Bookshelf Home Decoration</p>
+            <a class="rating" href="#reviews">
+              <span class="stars" aria-hidden="true">★★★★★</span>
+              <span class="rating__score">4.9</span>
+              <span class="rating__count">(377 reviews)</span>
+            </a>
+            <div class="price">
+              <span class="price__now" id="priceNow">£13.69</span>
+              <span class="price__vat">Price includes VAT</span>
+            </div>
+            <div class="promo" role="status">
+              <span class="promo__badge" aria-hidden="true">
+                <svg class="ico" viewBox="0 0 24 24"><circle cx="7.5" cy="7.5" r="2.5"/><circle cx="16.5" cy="16.5" r="2.5"/><path d="M19 5 5 19"/></svg>
+              </span>
+              <span class="promo__text"><span id="promoOff">£6.00</span> off on <span id="promoWas">£49.00</span></span>
+              <svg class="ico ico--chev promo__chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+            </div>
+
+            <fieldset class="option">
+              <legend class="option__label">Color: <span id="colorName">Black</span></legend>
+              <div class="swatches" id="swatches">
+                <label class="swatch" title="Silver"><input type="radio" name="color" value="Silver" data-index="0"><img src="assets/globe-silver.svg" alt="Silver"></label>
+                <label class="swatch" title="Pink"><input type="radio" name="color" value="Pink" data-index="1"><img src="assets/globe-pink.svg" alt="Pink"></label>
+                <label class="swatch" title="Aqua"><input type="radio" name="color" value="Aqua" data-index="2"><img src="assets/globe-aqua.svg" alt="Aqua"></label>
+                <label class="swatch" title="Black"><input type="radio" name="color" value="Black" data-index="3" checked><img src="assets/globe-black.svg" alt="Black"></label>
+                <label class="swatch" title="Midnight"><input type="radio" name="color" value="Midnight" data-index="4"><img src="assets/globe-midnight.svg" alt="Midnight"></label>
+                <label class="swatch" title="Gold"><input type="radio" name="color" value="Gold" data-index="5"><img src="assets/globe-gold.svg" alt="Gold"></label>
+              </div>
+            </fieldset>
+
+            <fieldset class="option">
+              <legend class="option__label">Size: <span id="sizeName">UK plug</span></legend>
+              <div class="pills" id="sizes">
+                <label class="pill"><input type="radio" name="size" value="EU plug"><span>EU plug</span></label>
+                <label class="pill"><input type="radio" name="size" value="US plug"><span>US plug</span></label>
+                <label class="pill"><input type="radio" name="size" value="UK plug" checked><span>UK plug</span></label>
+                <label class="pill"><input type="radio" name="size" value="AU plug"><span>AU plug</span></label>
+              </div>
+            </fieldset>
+
+            <button class="btn btn--primary btn--block" type="submit" id="addToCart">
+              <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h2l2.4 11h11.2L21 7H6.2"/><circle cx="9" cy="19" r="1.5"/><circle cx="17" cy="19" r="1.5"/></svg>
+              <span>Add to Cart</span>
+            </button>
+
+            <ul class="trust">
+              <li>
+                <svg class="ico ico--lg" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7z"/><circle cx="7" cy="18" r="1.8"/><circle cx="17" cy="18" r="1.8"/></svg>
+                <span>Worldwide<br>Shipping</span>
+              </li>
+              <li>
+                <svg class="ico ico--lg" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6z"/><path d="m9 12 2 2 4-4"/></svg>
+                <span>30-Day<br>Guarantee</span>
+              </li>
+              <li>
+                <svg class="ico ico--lg" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10" width="14" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/><circle cx="12" cy="15" r="1.2"/></svg>
+                <span>Secure<br>Checkout</span>
+              </li>
+            </ul>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Reviews ===== -->
+    <section class="reviews" id="reviews">
+      <div class="container">
+        <p class="eyebrow eyebrow--center">Real people. Real wonder.</p>
+        <h2 class="h2">What Our Customers Think</h2>
+        <ul class="reviews__grid">
+          <li class="review">
+            <span class="stars" aria-label="5 out of 5 stars">★★★★★</span>
+            <blockquote>“Absolutely love this! It looks incredible on my desk and always gets compliments. The floating globe is so mesmerising.”</blockquote>
+            <cite>— Sophie L.</cite>
+          </li>
+          <li class="review">
+            <span class="stars" aria-label="5 out of 5 stars">★★★★★</span>
+            <blockquote>“Such a cool and unique product. The light at night is beautiful and creates a really calming atmosphere.”</blockquote>
+            <cite>— Daniel M.</cite>
+          </li>
+          <li class="review">
+            <span class="stars" aria-label="5 out of 5 stars">★★★★★</span>
+            <blockquote>“Bought this as a gift for my son and he’s obsessed! It’s educational, stylish and just looks magical.”</blockquote>
+            <cite>— Emma T.</cite>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===== Feature / About ===== -->
+    <section class="feature" id="about">
+      <div class="container feature__inner">
+        <div class="feature__copy">
+          <p class="eyebrow">Beauty in motion</p>
+          <h2 class="h2 h2--left">Bring the World<br>to Your Space</h2>
+          <p class="feature__lead">A mesmerising floating globe that spins gently in mid-air, powered by magnetic levitation. With soft, ambient LED lighting, it transforms any room into a place of wonder, focus and inspiration.</p>
+          <a class="btn btn--primary" href="#shop">Explore COSMOS <span aria-hidden="true">→</span></a>
+        </div>
+        <ul class="feature__list">
+          <li>
+            <svg class="ico ico--lg" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.8 3 2.8 15 0 18M12 3c-2.8 3-2.8 15 0 18"/></svg>
+            <span>Levitates<br>Magnetically</span>
+          </li>
+          <li>
+            <svg class="ico ico--lg" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+            <span>Soothing<br>LED Light</span>
+          </li>
+          <li>
+            <svg class="ico ico--lg" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11 12 3l9 8"/><path d="M5 10v10h5v-6h4v6h5V10"/></svg>
+            <span>Perfect For<br>Home &amp; Office</span>
+          </li>
+          <li>
+            <svg class="ico ico--lg" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.5-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.5-7 10-7 10z"/></svg>
+            <span>Great For<br>All Ages</span>
+          </li>
+        </ul>
+        <figure class="feature__visual">
+          <img src="assets/lifestyle.svg" alt="White COSMOS globe lamp on a marble side table next to a stack of books" width="900" height="600" loading="lazy">
+        </figure>
+      </div>
+    </section>
+
+    <!-- ===== Video / Atmosphere ===== -->
+    <section class="atmos">
+      <div class="container">
+        <div class="atmos__inner">
+          <div class="atmos__media" id="videoBox">
+            <img src="assets/video-still.svg" alt="" width="900" height="600" loading="lazy">
+            <button class="play" type="button" id="playBtn" aria-label="Play video">
+              <span class="play__circle" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 6v12l10-6z"/></svg></span>
+              <span class="play__label">Play Video</span>
+            </button>
+          </div>
+          <div class="atmos__copy">
+            <p class="eyebrow eyebrow--light">No music. Just magic.</p>
+            <h2 class="atmos__title">Pure Atmosphere</h2>
+            <p class="atmos__lead">Our levitating globe is designed for one purpose — to bring beauty, calm and inspiration into your space. No noise, no distractions, just the mesmerising sight of a floating world and a soft, ambient glow.</p>
+            <ul class="atmos__list">
+              <li>
+                <svg class="ico ico--lg" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg>
+                <span>Calming<br>Atmosphere</span>
+              </li>
+              <li>
+                <svg class="ico ico--lg" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10v4h3l4 4V6l-4 4z"/><path d="m16 9 5 6M21 9l-5 6"/></svg>
+                <span>Distraction Free</span>
+              </li>
+              <li>
+                <svg class="ico ico--lg" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 3 3-3 3-3-3z"/><path d="m12 15 3 3-3 3-3-3z"/><path d="m5 8 4 4-4 4M19 8l-4 4 4 4"/></svg>
+                <span>A Timeless<br>Conversation Piece</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FAQ ===== -->
+    <section class="faq" id="faq">
+      <div class="container">
+        <p class="eyebrow eyebrow--center">Have questions?</p>
+        <h2 class="h2">Frequently asked questions</h2>
+        <div class="faq__grid">
+          <div class="faq__col">
+            <details class="faq__item">
+              <summary>Does it come pre-installed with a globe?<span class="faq__plus" aria-hidden="true"></span></summary>
+              <div class="faq__body"><p>Yes. Every COSMOS ships with the C-shaped levitation stand, the matching globe, and a power adapter for your region. Nothing else is needed.</p></div>
+            </details>
+            <details class="faq__item">
+              <summary>What countries are shown on the globe?<span class="faq__plus" aria-hidden="true"></span></summary>
+              <div class="faq__body"><p>The globe is a full political map of the world with country outlines, names and major cities printed in English.</p></div>
+            </details>
+            <details class="faq__item">
+              <summary>Is there any music or sound?<span class="faq__plus" aria-hidden="true"></span></summary>
+              <div class="faq__body"><p>No. COSMOS is completely silent. There are no speakers, fans or moving parts in the stand, just the quiet magic of magnetic levitation.</p></div>
+            </details>
+          </div>
+          <div class="faq__col">
+            <details class="faq__item">
+              <summary>What's in the box?<span class="faq__plus" aria-hidden="true"></span></summary>
+              <div class="faq__body"><p>1 × levitation stand with LED lighting, 1 × magnetic globe, 1 × power adapter with the plug you selected, and a quick-start guide.</p></div>
+            </details>
+            <details class="faq__item">
+              <summary>How long does delivery take?<span class="faq__plus" aria-hidden="true"></span></summary>
+              <div class="faq__body"><p>Shipping is free worldwide. UK orders typically arrive in 3–5 working days, and international orders in 7–14 working days. You'll receive a tracking link by email.</p></div>
+            </details>
+            <details class="faq__item">
+              <summary>What if it stops levitating?<span class="faq__plus" aria-hidden="true"></span></summary>
+              <div class="faq__body"><p>Simply lift the globe off, unplug the stand for 10 seconds, plug it back in and reposition the globe. If it still won't float, contact us and we'll replace it under our 30-day guarantee.</p></div>
+            </details>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== How to set up ===== -->
+    <section class="setup">
+      <div class="container">
+        <p class="eyebrow eyebrow--center">It's simple</p>
+        <h2 class="h2">How to Set This Up</h2>
+        <p class="setup__lead">Get your floating globe ready in just a few steps.</p>
+        <ol class="steps">
+          <li class="step">
+            <div class="step__head"><span class="step__num">1</span><h3>Connect &amp; Power</h3></div>
+            <img src="assets/step-1.svg" alt="" width="320" height="180" loading="lazy">
+            <p>Plug in the power cable and place the stand on a flat surface.</p>
+          </li>
+          <li class="step">
+            <div class="step__head"><span class="step__num">2</span><h3>Position the Globe</h3></div>
+            <img src="assets/step-2.svg" alt="" width="320" height="180" loading="lazy">
+            <p>Hold the globe between the top and bottom. Slowly move it until you feel it lift and stabilise.</p>
+          </li>
+          <li class="step">
+            <div class="step__head"><span class="step__num">3</span><h3>Enjoy the Magic</h3></div>
+            <img src="assets/step-3.svg" alt="" width="320" height="180" loading="lazy">
+            <p>Once it floats, give it a gentle spin and enjoy your world.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== Footer ===== -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <a class="logo" href="#top">COSMOS</a>
+        <p class="footer__tag">A brighter world at home</p>
+        <p class="footer__copy">© <span id="year">2024</span> COSMOS. All rights reserved.</p>
+      </div>
+      <div class="footer__links">
+        <nav aria-label="Footer">
+          <a href="#shop">Shop</a>
+          <a href="#about">About</a>
+          <a href="#reviews">Reviews</a>
+          <a href="#faq">FAQ</a>
+        </nav>
+        <ul class="social" aria-label="Social media">
+          <li><a href="#" aria-label="Instagram"><svg class="ico" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="4"/><circle cx="12" cy="12" r="3.5"/><circle cx="17" cy="7" r=".8" fill="currentColor"/></svg></a></li>
+          <li><a href="#" aria-label="TikTok"><svg class="ico" viewBox="0 0 24 24"><path d="M14 4v10.5a3.5 3.5 0 1 1-3.5-3.5"/><path d="M14 4c.5 3 2.5 4.5 5 4.5"/></svg></a></li>
+          <li><a href="#" aria-label="YouTube"><svg class="ico" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="4"/><path d="m10 9 5 3-5 3z" fill="currentColor"/></svg></a></li>
+          <li><a href="#" aria-label="Pinterest"><svg class="ico" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M11 8.5c-1.5.3-2.5 1.5-2.2 3 .2 1 1 1.4 1 1.4M13 9.5c1.5.5 1.4 2.5.4 3.6-.8.9-2.1.7-2.4-.2M11.5 12l-1.6 6.5"/></svg></a></li>
+        </ul>
+      </div>
+      <div class="footer__news">
+        <p class="footer__news-label">Join our journey</p>
+        <form class="newsletter" id="newsletterForm" novalidate>
+          <label class="sr-only" for="newsEmail">Email address</label>
+          <input id="newsEmail" type="email" name="email" placeholder="Your email address" autocomplete="email" required>
+          <button type="submit" aria-label="Subscribe"><svg class="ico" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        </form>
+        <p class="newsletter__msg" id="newsMsg" role="status"></p>
+        <div class="footer__legal">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== Cart drawer ===== -->
+  <div class="drawer-backdrop" id="cartBackdrop" hidden></div>
+  <aside class="drawer" id="cartDrawer" aria-label="Shopping cart" aria-hidden="true">
+    <div class="drawer__head">
+      <h2>Your cart</h2>
+      <button class="iconbtn" type="button" id="cartClose" aria-label="Close cart"><svg class="ico" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+    </div>
+    <ul class="cart-items" id="cartItems"></ul>
+    <p class="cart-empty" id="cartEmpty">Your cart is empty. Add a COSMOS to get started.</p>
+    <div class="drawer__foot" id="cartFoot" hidden>
+      <div class="cart-total"><span>Subtotal</span><strong id="cartTotal">£0.00</strong></div>
+      <p class="cart-note">Free worldwide shipping. VAT included.</p>
+      <button class="btn btn--primary btn--block" type="button" id="checkoutBtn">Checkout</button>
+    </div>
+  </aside>
+
+  <!-- ===== Video modal ===== -->
+  <div class="modal" id="videoModal" hidden role="dialog" aria-modal="true" aria-label="COSMOS video">
+    <div class="modal__backdrop" data-close></div>
+    <div class="modal__box">
+      <button class="iconbtn modal__close" type="button" data-close aria-label="Close video"><svg class="ico" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+      <div class="modal__video">
+        <video id="videoEl" controls playsinline poster="assets/video-still.svg" preload="none">
+          <source src="assets/cosmos.mp4" type="video/mp4">
+          Your browser does not support embedded video.
+        </video>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="js/main.js" defer></script>
+</body>
+</html>

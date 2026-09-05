@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="600" height="600">
+<defs>
+  <linearGradient id="midnight-stand" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#3a3d46"/><stop offset=".55" stop-color="#1c1e24"/><stop offset="1" stop-color="#0b0c10"/>
+  </linearGradient>
+  <linearGradient id="midnight-standface" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#3a3d46"/><stop offset="1" stop-color="#1c1e24"/>
+  </linearGradient>
+  <linearGradient id="midnight-glow" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#5ab4ff"/><stop offset=".5" stop-color="#c04cff"/><stop offset="1" stop-color="#5ab4ff"/>
+  </linearGradient>
+  <radialGradient id="midnight-globe" cx=".35" cy=".3" r=".8">
+    <stop offset="0" stop-color="#6b6f7a"/><stop offset=".45" stop-color="#2a2d36"/><stop offset="1" stop-color="#0a0b0e"/>
+  </radialGradient>
+  <radialGradient id="midnight-spec" cx=".3" cy=".25" r=".35">
+    <stop offset="0" stop-color="#fff" stop-opacity=".75"/><stop offset="1" stop-color="#fff" stop-opacity="0"/>
+  </radialGradient>
+  <radialGradient id="midnight-shadow" cx=".5" cy=".5" r=".5">
+    <stop offset="0" stop-color="#000" stop-opacity=".35"/><stop offset="1" stop-color="#000" stop-opacity="0"/>
+  </radialGradient>
+  <filter id="midnight-blur" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="9"/></filter>
+  <filter id="midnight-blur2" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="3"/></filter>
+  <filter id="midnight-blurbig" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="22"/></filter>
+  <clipPath id="midnight-clip"><circle cx="305" cy="285" r="84"/></clipPath>
+</defs>
+
+
+<ellipse cx="330" cy="500" rx="190" ry="26" fill="url(#midnight-shadow)"/>
+<!-- ambient glow -->
+<path d="M342.3,166.8 A150,150 0 1 0 342.3,403.2" fill="none" stroke="url(#midnight-glow)" stroke-width="70" stroke-linecap="round" opacity=".45" filter="url(#midnight-blurbig)"/>
+<!-- stand body -->
+<path d="M367.0,135.3 A190,190 0 1 0 367.0,434.7" fill="none" stroke="#0b0c10" stroke-width="78" stroke-linecap="butt"/>
+<path d="M369.4,132.1 A194,194 0 1 0 369.4,437.9" fill="none" stroke="url(#midnight-stand)" stroke-width="66" stroke-linecap="butt"/>
+<path d="M380.5,117.9 A212,212 0 1 0 380.5,452.1" fill="none" stroke="#3a3d46" stroke-width="3" stroke-linecap="butt" opacity=".5"/>
+<!-- base block -->
+<rect x="322" y="404" width="160" height="62" rx="8" fill="#0b0c10"/>
+<rect x="326" y="400" width="154" height="58" rx="8" fill="url(#midnight-standface)"/>
+<rect x="326" y="400" width="154" height="14" rx="6" fill="#3a3d46" opacity=".35"/>
+<!-- LED strip (inner edge) -->
+<path d="M341.1,168.4 A148,148 0 1 0 341.1,401.6" fill="none" stroke="url(#midnight-glow)" stroke-width="18" stroke-linecap="round" opacity=".85" filter="url(#midnight-blur)"/>
+<path d="M341.1,168.4 A148,148 0 1 0 341.1,401.6" fill="none" stroke="url(#midnight-glow)" stroke-width="6" stroke-linecap="round"/>
+<path d="M341.1,168.4 A148,148 0 1 0 341.1,401.6" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" opacity=".8"/>
+<!-- levitation ring -->
+<g transform="rotate(-14 305 285)">
+  <ellipse cx="305" cy="289" rx="118" ry="22" fill="none" stroke="#b9c7d8" stroke-width="10" opacity=".5" filter="url(#midnight-blur)"/>
+  <ellipse cx="305" cy="289" rx="118" ry="22" fill="none" stroke="#b9c7d8" stroke-width="2" opacity=".9"/>
+</g>
+<!-- globe -->
+<circle cx="305" cy="285" r="98" fill="#6b6f7a" opacity=".35" filter="url(#midnight-blur)"/>
+<circle cx="305" cy="285" r="84" fill="url(#midnight-globe)"/>
+<g clip-path="url(#midnight-clip)">
+  <g transform="translate(305 285) scale(1.05)" fill="#b5b9c4" opacity=".95">
+  <path d="M-52,-28 c6,-12 22,-18 34,-12 c8,4 6,14 14,16 c10,2 14,-8 24,-4 c8,4 4,16 -2,22 c-10,10 -30,6 -40,16 c-6,6 -14,4 -18,-4 c-4,-8 -16,-8 -20,-16 c-4,-8 4,-14 8,-18z"/>
+  <path d="M-10,12 c10,-6 22,-2 28,8 c4,8 -2,20 -12,24 c-8,4 -16,-2 -18,-10 c-2,-8 -6,-16 2,-22z"/>
+  <path d="M30,-46 c8,-4 18,0 22,8 c2,6 -4,10 -8,12 c-8,2 -18,-2 -18,-10 c0,-4 0,-8 4,-10z"/>
+  <path d="M40,20 c8,-2 18,4 16,12 c-2,8 -14,10 -20,6 c-6,-4 -4,-16 4,-18z"/>
+  <path d="M-72,10 c6,-6 14,-2 16,6 c2,8 -6,14 -12,10 c-6,-4 -8,-12 -4,-16z"/></g>
+  <g fill="none" stroke="#fff" stroke-opacity=".18" stroke-width="1">
+    <ellipse cx="305" cy="285" rx="84" ry="42"/>
+    <ellipse cx="305" cy="285" rx="84" ry="71.39999999999999"/>
+    <ellipse cx="305" cy="285" rx="42" ry="84"/>
+    <ellipse cx="305" cy="285" rx="71.39999999999999" ry="84"/>
+    <line x1="221" y1="285" x2="389" y2="285"/>
+    <line x1="305" y1="201" x2="305" y2="369"/>
+  </g>
+</g>
+<circle cx="305" cy="285" r="84" fill="url(#midnight-spec)"/>
+<circle cx="305" cy="285" r="84" fill="none" stroke="#fff" stroke-opacity=".35" stroke-width="1.5"/>
+<!-- front half of ring -->
+<g transform="rotate(-14 305 285)">
+  <path d="M187,289 A118,22 0 0 0 423,289" fill="none" stroke="#b9c7d8" stroke-width="2.5" opacity=".95"/>
+</g>
+</svg>

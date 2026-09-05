@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 180" width="320" height="180">
+<defs><radialGradient id="s3bg" cx=".5" cy=".5" r=".7"><stop offset="0" stop-color="#1b2a55"/><stop offset="1" stop-color="#05070c"/></radialGradient>
+<radialGradient id="s3g" cx=".35" cy=".3" r=".8"><stop offset="0" stop-color="#78b5ff"/><stop offset=".45" stop-color="#1e56d6"/><stop offset="1" stop-color="#0b2c86"/></radialGradient>
+<linearGradient id="s3glow" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#39a5ff"/><stop offset=".5" stop-color="#ff3ec8"/><stop offset="1" stop-color="#39a5ff"/></linearGradient>
+<filter id="s3b" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="6"/></filter>
+<clipPath id="s3c"><circle cx="170" cy="90" r="40"/></clipPath></defs>
+<rect width="320" height="180" fill="url(#s3bg)"/>
+<path d="M190,30 A70,70 0 1 0 190,150" fill="none" stroke="#0b0c10" stroke-width="30"/>
+<path d="M190,30 A70,70 0 1 0 190,150" fill="none" stroke="#2a2d35" stroke-width="22"/>
+<path d="M186,44 A58,58 0 1 0 186,136" fill="none" stroke="url(#s3glow)" stroke-width="8" filter="url(#s3b)" opacity=".9"/>
+<path d="M186,44 A58,58 0 1 0 186,136" fill="none" stroke="url(#s3glow)" stroke-width="3"/>
+<rect x="150" y="146" width="90" height="24" rx="5" fill="#14161b"/>
+<circle cx="170" cy="90" r="52" fill="#78b5ff" opacity=".3" filter="url(#s3b)"/>
+<circle cx="170" cy="90" r="40" fill="url(#s3g)"/>
+<g clip-path="url(#s3c)" fill="#9fd0ff" opacity=".95" transform="translate(170 90) scale(.48)">
+  <path d="M-52,-28 c6,-12 22,-18 34,-12 c8,4 6,14 14,16 c10,2 14,-8 24,-4 c8,4 4,16 -2,22 c-10,10 -30,6 -40,16 c-6,6 -14,4 -18,-4 c-4,-8 -16,-8 -20,-16 c-4,-8 4,-14 8,-18z"/>
+  <path d="M-10,12 c10,-6 22,-2 28,8 c4,8 -2,20 -12,24 c-8,4 -16,-2 -18,-10 c-2,-8 -6,-16 2,-22z"/>
+  <path d="M30,-46 c8,-4 18,0 22,8 c2,6 -4,10 -8,12 c-8,2 -18,-2 -18,-10 c0,-4 0,-8 4,-10z"/>
+  <path d="M40,20 c8,-2 18,4 16,12 c-2,8 -14,10 -20,6 c-6,-4 -4,-16 4,-18z"/>
+  <path d="M-72,10 c6,-6 14,-2 16,6 c2,8 -6,14 -12,10 c-6,-4 -8,-12 -4,-16z"/></g>
+<circle cx="170" cy="90" r="40" fill="none" stroke="#fff" stroke-opacity=".4"/>
+<g transform="rotate(-14 170 90)"><ellipse cx="170" cy="92" rx="56" ry="11" fill="none" stroke="#7fd0ff" stroke-width="1.5" opacity=".9"/></g>
+</svg>
