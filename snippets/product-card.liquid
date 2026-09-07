@@ -4,7 +4,6 @@
   Falls back to demo content when no product is assigned (so the design is visible in the editor).
 {%- endcomment -%}
 {%- liquid
-  assign known_swatches = 'silver,pink,aqua,black,midnight,gold' | split: ','
   assign current = product.selected_or_first_available_variant
   assign form_id = 'ProductForm-' | append: section.id
 -%}
@@ -52,21 +51,6 @@
         {%- if section.settings.price_note != blank -%}<span class="price__vat">{{ section.settings.price_note | escape }}</span>{%- endif -%}
       </div>
 
-      {%- liquid
-        assign promo = ''
-        if current.compare_at_price > current.price
-          assign saving = current.compare_at_price | minus: current.price | money
-          assign promo = saving | append: ' off on ' | append: current.compare_at_price | money
-        elsif section.settings.promo_text != blank
-          assign promo = section.settings.promo_text
-        endif
-      -%}
-      <div class="promo" role="status" data-promo {% if promo == blank %}hidden{% endif %}>
-        <span class="promo__badge" aria-hidden="true">{% render 'icon', icon: 'tag' %}</span>
-        <span class="promo__text" data-promo-text>{{ promo }}</span>
-        {% render 'icon', icon: 'chevron-right', size: 'chev', class: 'promo__chev' %}
-      </div>
-
       {%- unless product.has_only_default_variant -%}
         {%- for option in product.options_with_values -%}
           {%- liquid
@@ -90,11 +74,6 @@
                         assign swatch_src = variant.featured_image | image_url: width: 120, height: 120
                       endif
                     endfor
-                    assign value_handle = value | handleize
-                    if swatch_src == '' and known_swatches contains value_handle
-                      assign asset_name = 'globe-' | append: value_handle | append: '.svg'
-                      assign swatch_src = asset_name | asset_url
-                    endif
                   -%}
                   <label class="swatch" title="{{ value | escape }}">
                     <input type="radio" id="{{ input_id }}" name="option-{{ opt_idx }}" value="{{ value | escape }}" {% if value == option.selected_value %}checked{% endif %}>
@@ -144,7 +123,6 @@
               "available": {{ variant.available }},
               "options": {{ variant.options | json }},
               "price": {{ variant.price | money | json }},
-              "promo": {% if variant.compare_at_price > variant.price %}{{ variant.compare_at_price | minus: variant.price | money | append: ' off on ' | append: variant.compare_at_price | money | json }}{% elsif section.settings.promo_text != blank %}{{ section.settings.promo_text | json }}{% else %}""{% endif %},
               "image": {% if variant.featured_media != blank %}{{ variant.featured_media | image_url: width: 1000 | json }}{% else %}null{% endif %},
               "media_id": {% if variant.featured_media != blank %}{{ variant.featured_media.id }}{% else %}null{% endif %}
             }{% unless forloop.last %},{% endunless %}
@@ -160,20 +138,7 @@
       <h2 class="buybox__title">COSMOS Magnetic Levitating Globe Lamp</h2>
       <p class="buybox__sub">{{ section.settings.subtitle | default: 'Education Novelty Ball Light Desk Bookshelf Home Decoration' | escape }}</p>
       <a class="rating" href="#reviews"><span class="stars" aria-hidden="true">★★★★★</span><span class="rating__score">4.9</span><span class="rating__count">(377 reviews)</span></a>
-      <div class="price"><span class="price__now">{{ 1369 | money }}</span><span class="price__vat">{{ section.settings.price_note | default: 'Price includes VAT' | escape }}</span></div>
-      <div class="promo" role="status">
-        <span class="promo__badge" aria-hidden="true">{% render 'icon', icon: 'tag' %}</span>
-        <span class="promo__text">{{ section.settings.promo_text | default: '£6.00 off on £49.00' }}</span>
-        {% render 'icon', icon: 'chevron-right', size: 'chev', class: 'promo__chev' %}
-      </div>
-      <fieldset class="option">
-        <legend class="option__label">Color: <span>Black</span></legend>
-        <div class="swatches">
-          {%- for name in known_swatches -%}
-            <label class="swatch" title="{{ name | capitalize }}"><input type="radio" name="demo-color" value="{{ name }}" {% if name == 'black' %}checked{% endif %} disabled><img src="{{ 'globe-' | append: name | append: '.svg' | asset_url }}" alt="{{ name | capitalize }}" width="54" height="54"></label>
-          {%- endfor -%}
-        </div>
-      </fieldset>
+      <div class="price"><span class="price__now">{{ 3999 | money }}</span><span class="price__vat">{{ section.settings.price_note | default: 'Price includes VAT' | escape }}</span></div>
       <fieldset class="option">
         <legend class="option__label">Size: <span>UK plug</span></legend>
         <div class="pills">

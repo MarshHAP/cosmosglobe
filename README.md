@@ -13,8 +13,8 @@ Every push to the connected branch updates the theme automatically. Changes made
 
 ## Make the product shoppable
 
-1. Create the product in **Products** with two options: **Color** (Silver, Pink, Aqua, Black, Midnight, Gold) and **Size** (EU plug, US plug, UK plug, AU plug). Set the price to £13.69 and, optionally, a compare-at price so the promo banner is calculated automatically.
-2. Upload a photo per colour and assign it to that colour's variants. Colours without a photo fall back to the built-in illustrations when their name is one of the six above, or to a colour dot otherwise.
+1. Create the product in **Products** with one option, **Size** (EU plug, US plug, UK plug, AU plug), priced at £39.99.
+2. Upload the product photos to the product's media.
 3. In the theme editor open the **Featured product** section on the home page and select the product.
 
 Until a product is selected the section shows demo content so you can see the design.
@@ -33,7 +33,7 @@ Until a product is selected the section shows demo content so you can see the de
 
 ## Features
 
-- Variant picker: colour swatches (from variant images) and plug-size pills, with price, promo and image updating live.
+- Variant picker: plug-size pills (and colour swatches from variant images if you ever add a colour option), with price and image updating live.
 - AJAX add to cart with a slide-out cart drawer rendered by Shopify's Section Rendering API, so totals and currency are always server-accurate.
 - Country/currency selector in the announcement bar using Shopify Markets (`localization` form). Add countries under **Settings › Markets** to enable it.
 - Newsletter sign-up posts to Shopify customers with the `newsletter` tag.

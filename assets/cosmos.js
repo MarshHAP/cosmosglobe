@@ -120,8 +120,6 @@
     const addBtn = $('[data-add-to-cart]', form);
     const addLabel = $('[data-add-label]', form);
     const priceEl = $('[data-price]', form);
-    const promoEl = $('[data-promo]', form);
-    const promoText = $('[data-promo-text]', form);
     const optionSets = $$('[data-option-index]', form);
 
     const selectedOptions = () => optionSets.map((set) => {
@@ -139,7 +137,6 @@
       }
       idInput.value = match.id;
       if (priceEl) priceEl.textContent = match.price;
-      if (promoEl) { promoEl.hidden = !match.promo; if (promoText) promoText.textContent = match.promo || ''; }
       addBtn.disabled = !match.available;
       addLabel.textContent = match.available ? S.addToCart : S.soldOut;
       if (match.image) {

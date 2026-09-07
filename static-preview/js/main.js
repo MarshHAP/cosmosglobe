@@ -10,7 +10,7 @@
   /* ---------- Product data ---------- */
   const PRODUCT = {
     name: 'COSMOS Magnetic Levitating Globe Lamp',
-    price: 13.69,          // GBP, VAT included
+    price: 39.99,          // GBP, VAT included
     discount: 6.0,         // GBP off
     compareAt: 49.0,       // GBP
     variants: [
@@ -62,8 +62,6 @@
 
   const renderPrices = () => {
     $('#priceNow').textContent = money(PRODUCT.price);
-    $('#promoOff').textContent = money(PRODUCT.discount);
-    $('#promoWas').textContent = money(PRODUCT.compareAt);
     currencyLabel.textContent = CURRENCIES[currency].label;
     $$('#currencyMenu li').forEach((li) => li.setAttribute('aria-selected', String(li.dataset.currency === currency)));
     renderCart();
@@ -200,7 +198,7 @@
 
   $('#buyForm').addEventListener('submit', (e) => {
     e.preventDefault();
-    const color = ($('#swatches input:checked') || {}).value || 'Black';
+    const color = ($('#swatches input:checked') || {}).value || 'Original';
     const size = ($('#sizes input:checked') || {}).value || 'UK plug';
     const existing = cart.find((i) => i.color === color && i.size === size);
     if (existing) existing.qty += 1; else cart.push({ color, size, qty: 1 });
