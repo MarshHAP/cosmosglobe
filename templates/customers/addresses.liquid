@@ -1,0 +1,85 @@
+<section class="page-section">
+  <div class="container container--narrow">
+    <p class="eyebrow eyebrow--center"><a href="{{ routes.account_url }}">← Back to account</a></p>
+    <h1 class="h2">Addresses</h1>
+
+    <div class="account">
+      <div class="account__card">
+        <h2>Add a new address</h2>
+        {%- form 'customer_address', customer.new_address, class: 'form' -%}
+          <label for="AddressFirstNameNew">First name</label><input id="AddressFirstNameNew" type="text" name="address[first_name]" autocomplete="given-name">
+          <label for="AddressLastNameNew">Last name</label><input id="AddressLastNameNew" type="text" name="address[last_name]" autocomplete="family-name">
+          <label for="AddressCompanyNew">Company</label><input id="AddressCompanyNew" type="text" name="address[company]" autocomplete="organization">
+          <label for="AddressAddress1New">Address 1</label><input id="AddressAddress1New" type="text" name="address[address1]" autocomplete="address-line1">
+          <label for="AddressAddress2New">Address 2</label><input id="AddressAddress2New" type="text" name="address[address2]" autocomplete="address-line2">
+          <label for="AddressCityNew">City</label><input id="AddressCityNew" type="text" name="address[city]" autocomplete="address-level2">
+          <label for="AddressCountryNew">Country/region</label>
+          <select id="AddressCountryNew" name="address[country]" data-default="{{ form.country }}" autocomplete="country">{{ all_country_option_tags }}</select>
+          <label for="AddressProvinceNew">Province</label>
+          <select id="AddressProvinceNew" name="address[province]" data-default="{{ form.province }}" autocomplete="address-level1"></select>
+          <label for="AddressZipNew">Postal/ZIP code</label><input id="AddressZipNew" type="text" name="address[zip]" autocomplete="postal-code">
+          <label for="AddressPhoneNew">Phone</label><input id="AddressPhoneNew" type="tel" name="address[phone]" autocomplete="tel">
+          <label><input type="checkbox" name="address[default]"> Set as default address</label>
+          <button class="btn btn--primary" type="submit">Add address</button>
+        {%- endform -%}
+      </div>
+
+      {%- paginate customer.addresses by 10 -%}
+        {%- for address in customer.addresses -%}
+          <div class="account__card">
+            <h2>{% if address == customer.default_address %}Default address{% else %}Address{% endif %}</h2>
+            {{ address | format_address }}
+            <div class="form__links">
+              <a href="#EditAddress_{{ address.id }}">Edit</a>
+              <a href="#" data-address-delete="{{ address.id }}" data-confirm="Are you sure you want to delete this address?">Delete</a>
+            </div>
+            <details id="EditAddress_{{ address.id }}">
+              <summary>Edit this address</summary>
+              {%- form 'customer_address', address, class: 'form' -%}
+                <label for="AddressFirstName_{{ form.id }}">First name</label><input id="AddressFirstName_{{ form.id }}" type="text" name="address[first_name]" value="{{ form.first_name }}">
+                <label for="AddressLastName_{{ form.id }}">Last name</label><input id="AddressLastName_{{ form.id }}" type="text" name="address[last_name]" value="{{ form.last_name }}">
+                <label for="AddressCompany_{{ form.id }}">Company</label><input id="AddressCompany_{{ form.id }}" type="text" name="address[company]" value="{{ form.company }}">
+                <label for="AddressAddress1_{{ form.id }}">Address 1</label><input id="AddressAddress1_{{ form.id }}" type="text" name="address[address1]" value="{{ form.address1 }}">
+                <label for="AddressAddress2_{{ form.id }}">Address 2</label><input id="AddressAddress2_{{ form.id }}" type="text" name="address[address2]" value="{{ form.address2 }}">
+                <label for="AddressCity_{{ form.id }}">City</label><input id="AddressCity_{{ form.id }}" type="text" name="address[city]" value="{{ form.city }}">
+                <label for="AddressCountry_{{ form.id }}">Country/region</label>
+                <select id="AddressCountry_{{ form.id }}" name="address[country]" data-default="{{ form.country }}">{{ all_country_option_tags }}</select>
+                <label for="AddressProvince_{{ form.id }}">Province</label>
+                <select id="AddressProvince_{{ form.id }}" name="address[province]" data-default="{{ form.province }}"></select>
+                <label for="AddressZip_{{ form.id }}">Postal/ZIP code</label><input id="AddressZip_{{ form.id }}" type="text" name="address[zip]" value="{{ form.zip }}">
+                <label for="AddressPhone_{{ form.id }}">Phone</label><input id="AddressPhone_{{ form.id }}" type="tel" name="address[phone]" value="{{ form.phone }}">
+                <label><input type="checkbox" name="address[default]" {% if address == customer.default_address %}checked{% endif %}> Set as default address</label>
+                <button class="btn btn--primary" type="submit">Save</button>
+              {%- endform -%}
+            </details>
+          </div>
+        {%- endfor -%}
+        {%- if paginate.pages > 1 -%}<nav class="pagination">{{ paginate | default_pagination }}</nav>{%- endif -%}
+      {%- endpaginate -%}
+    </div>
+  </div>
+</section>
+
+<script src="{{ 'shopify_common.js' | shopify_asset_url }}" defer></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('select[name="address[country]"]').forEach(function (countrySelect) {
+      var provinceSelect = countrySelect.form.querySelector('select[name="address[province]"]');
+      if (window.Shopify && Shopify.CountryProvinceSelector && provinceSelect) {
+        new Shopify.CountryProvinceSelector(countrySelect.id, provinceSelect.id, { hideElement: provinceSelect.id });
+      }
+    });
+    document.querySelectorAll('[data-address-delete]').forEach(function (link) {
+      link.addEventListener('click', function (e) {
+        e.preventDefault();
+        if (!window.confirm(link.dataset.confirm)) return;
+        var form = document.createElement('form');
+        form.method = 'post';
+        form.action = '{{ routes.account_addresses_url }}/' + link.dataset.addressDelete;
+        form.innerHTML = '<input type="hidden" name="_method" value="delete">';
+        document.body.appendChild(form);
+        form.submit();
+      });
+    });
+  });
+</script>

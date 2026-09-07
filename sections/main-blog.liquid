@@ -1,0 +1,31 @@
+<section class="page-section">
+  <div class="container">
+    <h1 class="h2">{{ blog.title | escape }}</h1>
+    {%- paginate blog.articles by 9 -%}
+      {%- if blog.articles.size == 0 -%}
+        <p class="page-empty">No posts yet.</p>
+      {%- else -%}
+        <ul class="grid-products">
+          {%- for article in blog.articles -%}
+            <li class="pcard">
+              {%- if article.image -%}
+                <a href="{{ article.url }}" class="pcard__media">{{ article.image | image_url: width: 600 | image_tag: loading: 'lazy', alt: article.title }}</a>
+              {%- endif -%}
+              <a href="{{ article.url }}" class="pcard__title">{{ article.title | escape }}</a>
+              <div class="pcard__price">{{ article.published_at | date: '%d %B %Y' }}</div>
+            </li>
+          {%- endfor -%}
+        </ul>
+        {%- if paginate.pages > 1 -%}<nav class="pagination" aria-label="Pagination">{{ paginate | default_pagination }}</nav>{%- endif -%}
+      {%- endif -%}
+    {%- endpaginate -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Blog",
+  "tag": "section",
+  "settings": []
+}
+{% endschema %}

@@ -1,0 +1,18 @@
+<article class="page-section">
+  <div class="container container--narrow">
+    <p class="eyebrow eyebrow--center">{{ article.published_at | date: '%d %B %Y' }}</p>
+    <h1 class="h2">{{ article.title | escape }}</h1>
+    {%- if article.image -%}
+      <figure class="article__image">{{ article.image | image_url: width: 1400 | image_tag: alt: article.title }}</figure>
+    {%- endif -%}
+    <div class="rte">{{ article.content }}</div>
+  </div>
+</article>
+
+{% schema %}
+{
+  "name": "Article",
+  "tag": "section",
+  "settings": []
+}
+{% endschema %}

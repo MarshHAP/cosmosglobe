@@ -1,0 +1,22 @@
+<section class="page-section">
+  <div class="container container--narrow">
+    <h1 class="h2">Create account</h1>
+    <div class="account">
+      <div class="account__card">
+        {%- form 'create_customer', class: 'form' -%}
+          {{ form.errors | default_errors }}
+          <label for="RegisterFirstName">First name</label>
+          <input id="RegisterFirstName" type="text" name="customer[first_name]" autocomplete="given-name">
+          <label for="RegisterLastName">Last name</label>
+          <input id="RegisterLastName" type="text" name="customer[last_name]" autocomplete="family-name">
+          <label for="RegisterEmail">Email</label>
+          <input id="RegisterEmail" type="email" name="customer[email]" autocomplete="email" required>
+          <label for="RegisterPassword">Password</label>
+          <input id="RegisterPassword" type="password" name="customer[password]" autocomplete="new-password" required>
+          <button class="btn btn--primary" type="submit">Create account</button>
+          <div class="form__links"><a href="{{ routes.account_login_url }}">Already have an account? Log in</a></div>
+        {%- endform -%}
+      </div>
+    </div>
+  </div>
+</section>

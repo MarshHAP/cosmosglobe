@@ -1,0 +1,27 @@
+<section class="page-section">
+  <div class="container">
+    <h1 class="h2">Collections</h1>
+    <ul class="grid-products">
+      {%- for collection in collections -%}
+        <li class="pcard">
+          <a href="{{ collection.url }}" class="pcard__media">
+            {%- if collection.featured_image -%}
+              {{ collection.featured_image | image_url: width: 600 | image_tag: loading: 'lazy', alt: collection.title }}
+            {%- else -%}
+              <img src="{{ 'globe-black.svg' | asset_url }}" alt="" width="300" height="300">
+            {%- endif -%}
+          </a>
+          <a href="{{ collection.url }}" class="pcard__title">{{ collection.title | escape }}</a>
+        </li>
+      {%- endfor -%}
+    </ul>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Collections list",
+  "tag": "section",
+  "settings": []
+}
+{% endschema %}

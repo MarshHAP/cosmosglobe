@@ -1,0 +1,6 @@
+{
+  "settings_schema": {
+    "branding": { "name": "Branding" },
+    "colors": { "name": "Colors" }
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "general": {
+    "skip_to_content": "Skip to content",
+    "search": "Search",
+    "account": "Account",
+    "cart": "Cart",
+    "menu": "Menu",
+    "close": "Close"
+  },
+  "products": {
+    "add_to_cart": "Add to Cart",
+    "sold_out": "Sold out",
+    "unavailable": "Unavailable",
+    "quantity": "Quantity"
+  },
+  "cart": {
+    "title": "Your cart",
+    "empty": "Your cart is empty. Add a COSMOS to get started.",
+    "subtotal": "Subtotal",
+    "checkout": "Checkout",
+    "remove": "Remove",
+    "continue": "Continue shopping"
+  },
+  "newsletter": {
+    "label": "Join our journey",
+    "placeholder": "Your email address",
+    "success": "Thanks for joining. Welcome to a brighter world.",
+    "error": "Please enter a valid email address."
+  },
+  "customer": {
+    "login": "Log in",
+    "logout": "Log out",
+    "register": "Create account",
+    "email": "Email",
+    "password": "Password",
+    "forgot": "Forgot your password?"
+  }
+}

@@ -1,0 +1,83 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "COSMOS",
+    "theme_version": "1.0.0",
+    "theme_author": "COSMOS",
+    "theme_documentation_url": "https://github.com/MarshHAP/cosmosglobe",
+    "theme_support_url": "https://github.com/MarshHAP/cosmosglobe"
+  },
+  {
+    "name": "Branding",
+    "settings": [
+      {
+        "type": "text",
+        "id": "logo_text",
+        "label": "Logo text",
+        "default": "COSMOS",
+        "info": "Shown when no logo image is set."
+      },
+      {
+        "type": "image_picker",
+        "id": "logo",
+        "label": "Logo image"
+      },
+      {
+        "type": "range",
+        "id": "logo_width",
+        "label": "Logo width",
+        "min": 60,
+        "max": 300,
+        "step": 10,
+        "unit": "px",
+        "default": 120
+      },
+      {
+        "type": "image_picker",
+        "id": "favicon",
+        "label": "Favicon",
+        "info": "Square, at least 64 × 64 px."
+      }
+    ]
+  },
+  {
+    "name": "Colors",
+    "settings": [
+      {
+        "type": "color",
+        "id": "color_navy",
+        "label": "Primary (headings and buttons)",
+        "default": "#0f172a"
+      },
+      {
+        "type": "color",
+        "id": "color_accent",
+        "label": "Accent (selected options and badges)",
+        "default": "#2563eb"
+      },
+      {
+        "type": "color",
+        "id": "color_background",
+        "label": "Page background",
+        "default": "#f4f6fa"
+      }
+    ]
+  },
+  {
+    "name": "Cart",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "cart_drawer",
+        "label": "Open the cart drawer after adding to cart",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "cart_note",
+        "label": "Cart drawer note",
+        "default": "Free worldwide shipping. VAT included."
+      }
+    ]
+  }
+]

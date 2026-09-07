@@ -1,0 +1,101 @@
+<footer class="footer">
+  <div class="container footer__inner">
+    <div class="footer__brand">
+      <a class="logo" href="{{ routes.root_url }}">{{ settings.logo_text | default: shop.name | escape }}</a>
+      {%- if section.settings.tagline != blank -%}<p class="footer__tag">{{ section.settings.tagline | escape }}</p>{%- endif -%}
+      <p class="footer__copy">&copy; {{ 'now' | date: '%Y' }} {{ shop.name | escape }}. All rights reserved.</p>
+    </div>
+
+    <div class="footer__links">
+      <nav aria-label="Footer">
+        {%- if section.settings.use_anchor_links -%}
+          <a href="{{ routes.root_url }}#shop">Shop</a>
+          <a href="{{ routes.root_url }}#about">About</a>
+          <a href="{{ routes.root_url }}#reviews">Reviews</a>
+          <a href="{{ routes.root_url }}#faq">FAQ</a>
+        {%- else -%}
+          {%- for link in section.settings.menu.links -%}
+            <a href="{{ link.url }}">{{ link.title | escape }}</a>
+          {%- endfor -%}
+        {%- endif -%}
+      </nav>
+      {%- if section.blocks.size > 0 -%}
+        <ul class="social" aria-label="Social media">
+          {%- for block in section.blocks -%}
+            {%- if block.settings.url != blank -%}
+              <li {{ block.shopify_attributes }}>
+                <a href="{{ block.settings.url }}" target="_blank" rel="noopener" aria-label="{{ block.settings.network | capitalize }}">{% render 'icon', icon: block.settings.network %}</a>
+              </li>
+            {%- endif -%}
+          {%- endfor -%}
+        </ul>
+      {%- endif -%}
+    </div>
+
+    <div class="footer__news">
+      {%- if section.settings.show_newsletter -%}
+        <p class="footer__news-label">{{ section.settings.newsletter_label | escape }}</p>
+        {%- form 'customer', id: 'FooterNewsletter', class: 'newsletter' -%}
+          <input type="hidden" name="contact[tags]" value="newsletter">
+          <label class="sr-only" for="NewsletterEmail">Email address</label>
+          <input id="NewsletterEmail" type="email" name="contact[email]" placeholder="{{ section.settings.newsletter_placeholder | escape }}" autocomplete="email" required value="{{ form.email }}">
+          <button type="submit" aria-label="Subscribe">{% render 'icon', icon: 'arrow' %}</button>
+          {%- if form.posted_successfully? -%}
+            <p class="newsletter__msg" role="status">Thanks for joining. Welcome to a brighter world.</p>
+          {%- elsif form.errors -%}
+            <p class="newsletter__msg is-error" role="alert">{{ form.errors.messages.email | default: 'Please enter a valid email address.' }}</p>
+          {%- endif -%}
+        {%- endform -%}
+      {%- endif -%}
+      <div class="footer__legal">
+        {%- for link in section.settings.legal_menu.links -%}
+          <a href="{{ link.url }}">{{ link.title | escape }}</a>
+        {%- endfor -%}
+        {%- if section.settings.legal_menu.links.size == 0 -%}
+          {%- for policy in shop.policies -%}
+            <a href="{{ policy.url }}">{{ policy.title | escape }}</a>
+          {%- endfor -%}
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "class": "shopify-section-footer",
+  "settings": [
+    { "type": "text", "id": "tagline", "label": "Tagline", "default": "A brighter world at home" },
+    { "type": "checkbox", "id": "use_anchor_links", "label": "Use one-page anchor links (Shop, About, Reviews, FAQ)", "default": true },
+    { "type": "link_list", "id": "menu", "label": "Footer menu", "default": "footer" },
+    { "type": "link_list", "id": "legal_menu", "label": "Legal links", "info": "Leave empty to list your store policies automatically." },
+    { "type": "checkbox", "id": "show_newsletter", "label": "Show newsletter sign-up", "default": true },
+    { "type": "text", "id": "newsletter_label", "label": "Newsletter label", "default": "Join our journey" },
+    { "type": "text", "id": "newsletter_placeholder", "label": "Newsletter placeholder", "default": "Your email address" }
+  ],
+  "blocks": [
+    {
+      "type": "social",
+      "name": "Social link",
+      "settings": [
+        {
+          "type": "select",
+          "id": "network",
+          "label": "Network",
+          "default": "instagram",
+          "options": [
+            { "value": "instagram", "label": "Instagram" },
+            { "value": "tiktok", "label": "TikTok" },
+            { "value": "youtube", "label": "YouTube" },
+            { "value": "pinterest", "label": "Pinterest" },
+            { "value": "facebook", "label": "Facebook" }
+          ]
+        },
+        { "type": "url", "id": "url", "label": "URL" }
+      ]
+    }
+  ],
+  "max_blocks": 6
+}
+{% endschema %}

@@ -1,50 +1,51 @@
-# COSMOS — Magnetic Levitating Globe Lamp store
+# COSMOS — Shopify theme
 
-A one-page e-commerce store for the COSMOS levitating globe lamp. Static HTML, CSS and vanilla JavaScript with no build step, so it can be hosted on GitHub Pages, Netlify, Vercel or any static host.
+A Shopify Online Store 2.0 theme for the COSMOS magnetic levitating globe lamp. The home page is a one-page store: hero, featured product with colour and plug-size variants, reviews, feature section, video, FAQ, setup guide and footer with newsletter sign-up. Every section is editable in the Shopify theme editor.
 
-## Run it locally
+## Connect this repo to Shopify
+
+1. In Shopify admin go to **Online Store › Themes**.
+2. Under **Theme library** click **Add theme › Connect from GitHub**.
+3. Pick the `MarshHAP` account, the `cosmosglobe` repository and this branch.
+4. Shopify pulls the theme in. Click **Customize** to open the editor, then **Publish** when you're happy.
+
+Every push to the connected branch updates the theme automatically. Changes made in the theme editor are committed back to the branch by Shopify.
+
+## Make the product shoppable
+
+1. Create the product in **Products** with two options: **Color** (Silver, Pink, Aqua, Black, Midnight, Gold) and **Size** (EU plug, US plug, UK plug, AU plug). Set the price to £13.69 and, optionally, a compare-at price so the promo banner is calculated automatically.
+2. Upload a photo per colour and assign it to that colour's variants. Colours without a photo fall back to the built-in illustrations when their name is one of the six above, or to a colour dot otherwise.
+3. In the theme editor open the **Featured product** section on the home page and select the product.
+
+Until a product is selected the section shows demo content so you can see the design.
+
+## Theme structure
+
+| Folder | What's inside |
+| --- | --- |
+| `layout/` | `theme.liquid` (main layout), `password.liquid` |
+| `sections/` | Home page sections (`hero`, `featured-product`, `reviews`, `feature`, `video`, `faq`, `setup-steps`), header/footer groups, cart drawer, and `main-*` sections for standard pages |
+| `snippets/` | `product-card` (gallery + buybox), `icon` |
+| `templates/` | JSON templates for every page type, plus customer account templates and the gift card |
+| `assets/` | `cosmos.css`, `cosmos.js`, and SVG illustrations used as placeholders |
+| `config/` | Theme settings schema and defaults |
+| `locales/` | English strings |
+
+## Features
+
+- Variant picker: colour swatches (from variant images) and plug-size pills, with price, promo and image updating live.
+- AJAX add to cart with a slide-out cart drawer rendered by Shopify's Section Rendering API, so totals and currency are always server-accurate.
+- Country/currency selector in the announcement bar using Shopify Markets (`localization` form). Add countries under **Settings › Markets** to enable it.
+- Newsletter sign-up posts to Shopify customers with the `newsletter` tag.
+- Video section supports an uploaded video or a YouTube/Vimeo link.
+- Responsive down to phone widths, keyboard accessible, no JavaScript dependencies.
+
+## Local development
 
 ```bash
-npx serve .
-# or
-python3 -m http.server 8080
+npm i -g @shopify/cli
+shopify theme check          # lint the theme
+shopify theme dev --store your-store.myshopify.com   # live preview with hot reload
 ```
 
-Then open <http://localhost:8080>.
-
-## What's on the page
-
-1. Announcement bar with a currency picker (GBP, USD, EUR, AUD)
-2. Sticky header with nav, search, account and cart
-3. Hero: "A Brighter Perspective"
-4. Product card: gallery with six colour variants, plug-size selector, price, promo banner and add-to-cart
-5. Customer reviews
-6. "Bring the World to Your Space" feature section
-7. "Pure Atmosphere" video section with a play button and modal
-8. FAQ accordion in two columns
-9. "How to Set This Up" three-step guide
-10. Footer with newsletter sign-up, social links and legal links
-
-## Interactions
-
-- Colour swatches and thumbnails swap the main image and stay in sync.
-- The currency picker converts all prices and pre-selects the matching plug.
-- Add to Cart opens a slide-out cart drawer with quantity controls. The cart and currency are remembered in `localStorage`.
-- The play button opens a video modal. Drop your product video in at `assets/cosmos.mp4` and it will play; until then the poster frame is shown.
-- FAQ items expand one at a time per column.
-
-## Swapping in real product photos
-
-The product art in `assets/` is generated SVG placeholder artwork. To use your real photos, replace these files (keeping the same names) or update the paths in `index.html` and the `PRODUCT.variants` list in `js/main.js`:
-
-| File | Used for |
-| --- | --- |
-| `assets/hero-globe.svg` | Hero image |
-| `assets/globe-{silver,pink,aqua,black,midnight,gold}.svg` | Gallery, thumbnails and colour swatches |
-| `assets/lifestyle.svg` | "Bring the World to Your Space" scene |
-| `assets/video-still.svg` | Video section still and modal poster |
-| `assets/step-1.svg`, `step-2.svg`, `step-3.svg` | Setup guide |
-
-## Pricing and checkout
-
-Prices, the discount and the colour list live at the top of `js/main.js` in `PRODUCT`. Exchange rates are in `CURRENCIES`. The Checkout button currently shows a message; connect it to Shopify, Stripe or your payment provider of choice.
+`static-preview/` contains a standalone HTML mock-up of the same design that can be opened without Shopify. It is not part of the theme.

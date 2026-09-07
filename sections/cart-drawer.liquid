@@ -1,0 +1,60 @@
+<div class="drawer-backdrop" id="cartBackdrop" hidden data-cart-close></div>
+<aside class="drawer" id="cartDrawer" aria-label="Shopping cart" aria-hidden="true" data-count="{{ cart.item_count }}">
+  <div class="drawer__head">
+    <h2>Your cart</h2>
+    <button class="iconbtn" type="button" id="cartClose" aria-label="Close cart" data-cart-close>{% render 'icon', icon: 'close' %}</button>
+  </div>
+
+  <div class="drawer__body" id="cartDrawerBody">
+    {%- if cart.item_count == 0 -%}
+      <p class="cart-empty">Your cart is empty. Add a COSMOS to get started.</p>
+    {%- else -%}
+      <ul class="cart-items">
+        {%- for item in cart.items -%}
+          <li class="cart-item" data-line="{{ forloop.index }}">
+            {%- if item.image -%}
+              {%- assign item_alt = item.title | escape -%}
+              {{ item.image | image_url: width: 140, height: 140 | image_tag: alt: item_alt, loading: 'lazy' }}
+            {%- else -%}
+              <img src="{{ 'globe-black.svg' | asset_url }}" alt="" width="70" height="70">
+            {%- endif -%}
+            <div>
+              <a class="cart-item__name" href="{{ item.url }}">{{ item.product.title | escape }}</a>
+              {%- unless item.product.has_only_default_variant -%}
+                <div class="cart-item__meta">{{ item.variant.title | escape }}</div>
+              {%- endunless -%}
+              {%- for property in item.properties -%}
+                {%- unless property.last == blank or property.first contains '_' -%}
+                  <div class="cart-item__meta">{{ property.first }}: {{ property.last }}</div>
+                {%- endunless -%}
+              {%- endfor -%}
+              <div class="cart-item__qty">
+                <button type="button" data-cart-qty="{{ item.quantity | minus: 1 }}" data-line="{{ forloop.index }}" aria-label="Decrease quantity">−</button>
+                <output aria-live="polite">{{ item.quantity }}</output>
+                <button type="button" data-cart-qty="{{ item.quantity | plus: 1 }}" data-line="{{ forloop.index }}" aria-label="Increase quantity">+</button>
+              </div>
+            </div>
+            <div>
+              <div class="cart-item__price">{{ item.final_line_price | money }}</div>
+              <button type="button" class="cart-item__remove" data-cart-qty="0" data-line="{{ forloop.index }}">Remove</button>
+            </div>
+          </li>
+        {%- endfor -%}
+      </ul>
+      <div class="drawer__foot">
+        <div class="cart-total"><span>Subtotal</span><strong>{{ cart.total_price | money }}</strong></div>
+        {%- if settings.cart_note != blank -%}<p class="cart-note">{{ settings.cart_note | escape }}</p>{%- endif -%}
+        <form action="{{ routes.cart_url }}" method="post">
+          <button class="btn btn--primary btn--block" type="submit" name="checkout">Checkout</button>
+        </form>
+      </div>
+    {%- endif -%}
+  </div>
+</aside>
+
+{% schema %}
+{
+  "name": "Cart drawer",
+  "settings": []
+}
+{% endschema %}

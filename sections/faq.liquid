@@ -1,0 +1,63 @@
+<section class="faq" id="faq">
+  <div class="container">
+    {%- if section.settings.eyebrow != blank -%}<p class="eyebrow eyebrow--center">{{ section.settings.eyebrow | escape }}</p>{%- endif -%}
+    {%- if section.settings.heading != blank -%}<h2 class="h2">{{ section.settings.heading | escape }}</h2>{%- endif -%}
+    {%- liquid
+      assign total = section.blocks.size
+      assign half = total | plus: 1 | divided_by: 2
+    -%}
+    <div class="faq__grid">
+      <div class="faq__col">
+        {%- for block in section.blocks limit: half -%}
+          <details class="faq__item" {{ block.shopify_attributes }}>
+            <summary>{{ block.settings.question | escape }}<span class="faq__plus" aria-hidden="true"></span></summary>
+            <div class="faq__body">{{ block.settings.answer }}</div>
+          </details>
+        {%- endfor -%}
+      </div>
+      <div class="faq__col">
+        {%- for block in section.blocks offset: half -%}
+          <details class="faq__item" {{ block.shopify_attributes }}>
+            <summary>{{ block.settings.question | escape }}<span class="faq__plus" aria-hidden="true"></span></summary>
+            <div class="faq__body">{{ block.settings.answer }}</div>
+          </details>
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "FAQ",
+  "tag": "section",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Have questions?" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Frequently asked questions" }
+  ],
+  "blocks": [
+    {
+      "type": "question",
+      "name": "Question",
+      "settings": [
+        { "type": "text", "id": "question", "label": "Question", "default": "Does it come pre-installed with a globe?" },
+        { "type": "richtext", "id": "answer", "label": "Answer", "default": "<p>Yes. Every COSMOS ships with the C-shaped levitation stand, the matching globe, and a power adapter for your region.</p>" }
+      ]
+    }
+  ],
+  "max_blocks": 12,
+  "presets": [
+    {
+      "name": "FAQ",
+      "blocks": [
+        { "type": "question", "settings": { "question": "Does it come pre-installed with a globe?", "answer": "<p>Yes. Every COSMOS ships with the C-shaped levitation stand, the matching globe, and a power adapter for your region. Nothing else is needed.</p>" } },
+        { "type": "question", "settings": { "question": "What countries are shown on the globe?", "answer": "<p>The globe is a full political map of the world with country outlines, names and major cities printed in English.</p>" } },
+        { "type": "question", "settings": { "question": "Is there any music or sound?", "answer": "<p>No. COSMOS is completely silent. There are no speakers, fans or moving parts in the stand, just the quiet magic of magnetic levitation.</p>" } },
+        { "type": "question", "settings": { "question": "What's in the box?", "answer": "<p>1 × levitation stand with LED lighting, 1 × magnetic globe, 1 × power adapter with the plug you selected, and a quick-start guide.</p>" } },
+        { "type": "question", "settings": { "question": "How long does delivery take?", "answer": "<p>Shipping is free worldwide. UK orders typically arrive in 3–5 working days, and international orders in 7–14 working days. You'll receive a tracking link by email.</p>" } },
+        { "type": "question", "settings": { "question": "What if it stops levitating?", "answer": "<p>Simply lift the globe off, unplug the stand for 10 seconds, plug it back in and reposition the globe. If it still won't float, contact us and we'll replace it under our 30-day guarantee.</p>" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

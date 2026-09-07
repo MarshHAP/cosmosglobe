@@ -1,0 +1,75 @@
+<header class="header" id="top" data-section-id="{{ section.id }}">
+  <div class="container header__inner">
+    <a class="logo" href="{{ routes.root_url }}" aria-label="{{ shop.name | escape }} home">
+      {%- if settings.logo != blank -%}
+        {{ settings.logo | image_url: width: 600 | image_tag: width: settings.logo_width, alt: shop.name, class: 'logo__img' }}
+      {%- else -%}
+        {{ settings.logo_text | default: shop.name | escape }}
+      {%- endif -%}
+    </a>
+
+    <nav class="nav" aria-label="Primary">
+      {%- if section.settings.use_anchor_links -%}
+        <a href="{{ routes.root_url }}#top">Home</a>
+        <a href="{{ routes.root_url }}#shop">Shop</a>
+        <a href="{{ routes.root_url }}#about">About</a>
+        <a href="{{ routes.root_url }}#reviews">Reviews</a>
+        <a href="{{ routes.root_url }}#faq">FAQ</a>
+      {%- else -%}
+        {%- for link in section.settings.menu.links -%}
+          <a href="{{ link.url }}"{% if link.current %} class="is-active" aria-current="page"{% endif %}>{{ link.title | escape }}</a>
+        {%- endfor -%}
+      {%- endif -%}
+    </nav>
+
+    <div class="header__actions">
+      <a class="iconbtn" href="{{ routes.search_url }}" aria-label="Search">{% render 'icon', icon: 'search' %}</a>
+      {%- if shop.customer_accounts_enabled -%}
+        <a class="iconbtn" href="{% if customer %}{{ routes.account_url }}{% else %}{{ routes.account_login_url }}{% endif %}" aria-label="Account">{% render 'icon', icon: 'user' %}</a>
+      {%- endif -%}
+      <a class="iconbtn iconbtn--cart" href="{{ routes.cart_url }}" id="cartBtn" aria-label="Open cart" data-cart-toggle>
+        {% render 'icon', icon: 'bag' %}
+        <span class="cart-count" id="cartCount" {% if cart.item_count == 0 %}hidden{% endif %}>{{ cart.item_count }}</span>
+      </a>
+      <button class="iconbtn burger" type="button" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav">
+        {% render 'icon', icon: 'menu' %}
+      </button>
+    </div>
+  </div>
+
+  <nav class="mobile-nav" id="mobileNav" hidden aria-label="Mobile">
+    {%- if section.settings.use_anchor_links -%}
+      <a href="{{ routes.root_url }}#top">Home</a>
+      <a href="{{ routes.root_url }}#shop">Shop</a>
+      <a href="{{ routes.root_url }}#about">About</a>
+      <a href="{{ routes.root_url }}#reviews">Reviews</a>
+      <a href="{{ routes.root_url }}#faq">FAQ</a>
+    {%- else -%}
+      {%- for link in section.settings.menu.links -%}
+        <a href="{{ link.url }}">{{ link.title | escape }}</a>
+      {%- endfor -%}
+    {%- endif -%}
+  </nav>
+</header>
+
+{% schema %}
+{
+  "name": "Header",
+  "class": "shopify-section-header",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "use_anchor_links",
+      "label": "Use one-page anchor links (Home, Shop, About, Reviews, FAQ)",
+      "default": true,
+      "info": "Turn off to use the menu selected below."
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Menu",
+      "default": "main-menu"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,48 @@
+{%- layout none -%}
+<!doctype html>
+<html lang="{{ request.locale.iso_code }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ shop.name }} gift card</title>
+  <link rel="icon" type="image/svg+xml" href="{{ 'favicon.svg' | asset_url }}">
+  {{ content_for_header }}
+  {{ 'cosmos.css' | asset_url | stylesheet_tag }}
+  <style>
+    .giftcard { min-height: 100vh; display: grid; place-items: center; padding: 40px 20px; text-align: center; }
+    .giftcard__card { background: #fff; border-radius: 22px; box-shadow: var(--shadow-lg); padding: 32px; max-width: 480px; width: 100%; }
+    .giftcard__amount { font-size: 40px; font-weight: 700; color: var(--navy); margin: 12px 0; }
+    .giftcard__code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 20px; letter-spacing: .1em; background: var(--bg-2); padding: 12px; border-radius: 10px; margin: 16px 0; }
+    .giftcard__qr { margin: 16px auto; }
+    .giftcard__actions { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+  </style>
+</head>
+<body>
+  <main class="giftcard">
+    <div class="giftcard__card">
+      <p class="logo">{{ shop.name | escape }}</p>
+      <p class="eyebrow">Here's your gift card</p>
+      <p class="giftcard__amount">{{ gift_card.initial_value | money }}</p>
+      {%- if gift_card.enabled == false or gift_card.expired -%}
+        <p class="page-lead">This gift card is no longer valid.</p>
+      {%- elsif gift_card.balance != gift_card.initial_value -%}
+        <p class="page-lead">{{ gift_card.balance | money }} remaining</p>
+      {%- endif -%}
+      <p class="giftcard__code">{{ gift_card.code | format_code }}</p>
+      <div class="giftcard__qr" id="QrCode" data-identifier="{{ gift_card.qr_identifier }}"></div>
+      {%- if gift_card.expires_on -%}<p class="page-lead">Expires {{ gift_card.expires_on | date: '%d %B %Y' }}</p>{%- endif -%}
+      <div class="giftcard__actions">
+        <a class="btn btn--primary" href="{{ shop.url }}">Shop now</a>
+        <button class="btn btn--ghost" type="button" onclick="window.print()">Print</button>
+      </div>
+    </div>
+  </main>
+  <script src="{{ 'vendor/qrcode.js' | shopify_asset_url }}" defer></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var el = document.getElementById('QrCode');
+      if (window.QRCode && el) new QRCode(el, { text: el.dataset.identifier, width: 120, height: 120 });
+    });
+  </script>
+</body>
+</html>

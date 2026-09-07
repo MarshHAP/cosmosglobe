@@ -1,0 +1,76 @@
+<div class="announce">
+  <div class="container announce__inner">
+    <ul class="announce__list" aria-label="Store highlights">
+      {%- for block in section.blocks -%}
+        {%- unless forloop.first -%}<li aria-hidden="true" class="announce__sep">|</li>{%- endunless -%}
+        <li {{ block.shopify_attributes }}>
+          {%- if block.settings.link != blank -%}<a href="{{ block.settings.link }}">{%- endif -%}
+          {%- if block.settings.bold -%}<strong>{{ block.settings.text | escape }}</strong>{%- else -%}{{ block.settings.text | escape }}{%- endif -%}
+          {%- if block.settings.link != blank -%}</a>{%- endif -%}
+        </li>
+      {%- endfor -%}
+    </ul>
+
+    {%- if section.settings.show_localization and localization.available_countries.size > 1 -%}
+      <div class="currency">
+        {%- form 'localization', id: 'AnnouncementLocalization', class: 'currency__form' -%}
+          {% render 'icon', icon: 'globe' %}
+          <label class="sr-only" for="AnnouncementCountry">Country/region</label>
+          <select id="AnnouncementCountry" name="country_code" class="currency__select" data-auto-submit>
+            {%- for country in localization.available_countries -%}
+              <option value="{{ country.iso_code }}" {% if country.iso_code == localization.country.iso_code %}selected{% endif %}>
+                {{ country.name }} ({{ country.currency.iso_code }})
+              </option>
+            {%- endfor -%}
+          </select>
+          {% render 'icon', icon: 'chevron', size: 'chev' %}
+        {%- endform -%}
+      </div>
+    {%- elsif section.settings.show_localization -%}
+      <div class="currency">
+        <span class="currency__btn">
+          {% render 'icon', icon: 'globe' %}
+          <span>{{ localization.country.name }} ({{ localization.country.currency.iso_code }})</span>
+        </span>
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Announcement bar",
+  "class": "shopify-section-announcement",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_localization",
+      "label": "Show country/currency selector",
+      "default": true,
+      "info": "Add countries under Settings › Markets to enable currency switching."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "message",
+      "name": "Message",
+      "settings": [
+        { "type": "text", "id": "text", "label": "Text", "default": "Free worldwide shipping" },
+        { "type": "checkbox", "id": "bold", "label": "Bold", "default": false },
+        { "type": "url", "id": "link", "label": "Link" }
+      ]
+    }
+  ],
+  "max_blocks": 4,
+  "presets": [
+    {
+      "name": "Announcement bar",
+      "blocks": [
+        { "type": "message", "settings": { "text": "Free worldwide shipping" } },
+        { "type": "message", "settings": { "text": "30-day money-back guarantee" } },
+        { "type": "message", "settings": { "text": "A brighter world awaits", "bold": true } }
+      ]
+    }
+  ]
+}
+{% endschema %}

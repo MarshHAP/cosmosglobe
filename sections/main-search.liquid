@@ -1,0 +1,47 @@
+<section class="page-section">
+  <div class="container container--narrow">
+    <h1 class="h2">Search</h1>
+    <form action="{{ routes.search_url }}" method="get" role="search" class="search-form">
+      <label class="sr-only" for="SearchInput">Search</label>
+      <input id="SearchInput" type="search" name="q" value="{{ search.terms | escape }}" placeholder="Search products" autocomplete="off">
+      <input type="hidden" name="options[prefix]" value="last">
+      <button class="btn btn--primary" type="submit">Search</button>
+    </form>
+
+    {%- if search.performed -%}
+      {%- paginate search.results by 12 -%}
+        {%- if search.results_count == 0 -%}
+          <p class="page-empty">No results for “{{ search.terms | escape }}”.</p>
+        {%- else -%}
+          <p class="page-lead">{{ search.results_count }} result{% if search.results_count != 1 %}s{% endif %} for “{{ search.terms | escape }}”</p>
+          <ul class="grid-products">
+            {%- for item in search.results -%}
+              <li class="pcard">
+                <a href="{{ item.url }}" class="pcard__media">
+                  {%- if item.featured_media -%}
+                    {{ item.featured_media | image_url: width: 600 | image_tag: loading: 'lazy', alt: item.title }}
+                  {%- elsif item.image -%}
+                    {{ item.image | image_url: width: 600 | image_tag: loading: 'lazy', alt: item.title }}
+                  {%- else -%}
+                    <img src="{{ 'globe-black.svg' | asset_url }}" alt="" width="300" height="300">
+                  {%- endif -%}
+                </a>
+                <a href="{{ item.url }}" class="pcard__title">{{ item.title | escape }}</a>
+                {%- if item.object_type == 'product' -%}<div class="pcard__price">{{ item.price | money }}</div>{%- endif -%}
+              </li>
+            {%- endfor -%}
+          </ul>
+          {%- if paginate.pages > 1 -%}<nav class="pagination" aria-label="Pagination">{{ paginate | default_pagination }}</nav>{%- endif -%}
+        {%- endif -%}
+      {%- endpaginate -%}
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Search page",
+  "tag": "section",
+  "settings": []
+}
+{% endschema %}

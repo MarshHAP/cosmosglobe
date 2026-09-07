@@ -1,0 +1,40 @@
+<section class="page-section">
+  <div class="container">
+    <p class="eyebrow eyebrow--center">Shop</p>
+    <h1 class="h2">{{ collection.title | escape }}</h1>
+    {%- if collection.description != blank -%}<div class="rte page-lead">{{ collection.description }}</div>{%- endif -%}
+    {%- paginate collection.products by 12 -%}
+      {%- if collection.products.size == 0 -%}
+        <p class="page-empty">No products in this collection yet.</p>
+      {%- else -%}
+        <ul class="grid-products">
+          {%- for product in collection.products -%}
+            <li class="pcard">
+              <a href="{{ product.url }}" class="pcard__media">
+                {%- if product.featured_media -%}
+                  {{ product.featured_media | image_url: width: 600 | image_tag: loading: 'lazy', alt: product.title }}
+                {%- else -%}
+                  <img src="{{ 'globe-black.svg' | asset_url }}" alt="" width="300" height="300">
+                {%- endif -%}
+              </a>
+              <a href="{{ product.url }}" class="pcard__title">{{ product.title | escape }}</a>
+              <div class="pcard__price">
+                {{ product.price | money }}
+                {%- if product.compare_at_price > product.price -%} <s>{{ product.compare_at_price | money }}</s>{%- endif -%}
+              </div>
+            </li>
+          {%- endfor -%}
+        </ul>
+        {%- if paginate.pages > 1 -%}<nav class="pagination" aria-label="Pagination">{{ paginate | default_pagination }}</nav>{%- endif -%}
+      {%- endif -%}
+    {%- endpaginate -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Collection page",
+  "tag": "section",
+  "settings": []
+}
+{% endschema %}

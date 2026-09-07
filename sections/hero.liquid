@@ -1,0 +1,89 @@
+<section class="hero" id="hero">
+  <div class="container hero__inner">
+    <div class="hero__copy">
+      {%- if section.settings.eyebrow != blank -%}<p class="eyebrow">{{ section.settings.eyebrow | escape }}</p>{%- endif -%}
+      <h1 class="hero__title">{{ section.settings.heading }}</h1>
+      {%- if section.settings.text != blank -%}<p class="hero__lead">{{ section.settings.text | escape }}</p>{%- endif -%}
+      {%- if section.blocks.size > 0 -%}
+        <ul class="hero__perks">
+          {%- for block in section.blocks -%}
+            <li {{ block.shopify_attributes }}>
+              {% render 'icon', icon: block.settings.icon, size: 'lg' %}
+              <span>{{ block.settings.text | newline_to_br }}</span>
+            </li>
+          {%- endfor -%}
+        </ul>
+      {%- endif -%}
+    </div>
+
+    <div class="hero__visual">
+      {%- if section.settings.image != blank -%}
+        {%- assign hero_alt = section.settings.image.alt | default: section.settings.heading | strip_html -%}
+        {{ section.settings.image | image_url: width: 1200 | image_tag: class: 'hero__img', widths: '600, 900, 1200', sizes: '(max-width: 860px) 90vw, 520px', fetchpriority: 'high', alt: hero_alt }}
+      {%- else -%}
+        <img class="hero__img" src="{{ 'hero-globe.svg' | asset_url }}" alt="COSMOS levitating globe lamp with a glowing blue and pink LED ring" width="600" height="600" fetchpriority="high">
+      {%- endif -%}
+    </div>
+
+    {%- if section.settings.tag_line_1 != blank or section.settings.tag_line_2 != blank -%}
+      <div class="hero__tag" aria-hidden="true">
+        {%- if section.settings.tag_line_1 != blank -%}<span>{{ section.settings.tag_line_1 | newline_to_br }}</span>{%- endif -%}
+        {%- if section.settings.tag_line_2 != blank -%}<span>{{ section.settings.tag_line_2 | newline_to_br }}</span>{%- endif -%}
+        <i></i>
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Hero",
+  "tag": "section",
+  "class": "shopify-section-hero",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "More than a decoration" },
+    { "type": "richtext", "id": "heading", "label": "Heading", "default": "<p>A Brighter<br>Perspective</p>" },
+    { "type": "textarea", "id": "text", "label": "Text", "default": "A floating globe that inspires curiosity, brings calm to your space, and reminds you how extraordinary our world is." },
+    { "type": "image_picker", "id": "image", "label": "Image", "info": "Leave empty to use the built-in globe illustration." },
+    { "type": "textarea", "id": "tag_line_1", "label": "Side tag, line 1", "default": "A smaller\nworld" },
+    { "type": "textarea", "id": "tag_line_2", "label": "Side tag, line 2", "default": "A brighter\nyou" }
+  ],
+  "blocks": [
+    {
+      "type": "perk",
+      "name": "Perk",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "default": "sun",
+          "options": [
+            { "value": "book", "label": "Book" },
+            { "value": "sun", "label": "Sun" },
+            { "value": "home", "label": "Home" },
+            { "value": "globe", "label": "Globe" },
+            { "value": "heart", "label": "Heart" },
+            { "value": "moon", "label": "Moon" },
+            { "value": "sparkle", "label": "Sparkle" },
+            { "value": "shield", "label": "Shield" },
+            { "value": "truck", "label": "Truck" }
+          ]
+        },
+        { "type": "textarea", "id": "text", "label": "Text", "default": "Soothing\nLED Light" }
+      ]
+    }
+  ],
+  "max_blocks": 4,
+  "presets": [
+    {
+      "name": "Hero",
+      "blocks": [
+        { "type": "perk", "settings": { "icon": "book", "text": "Educational\n& Inspiring" } },
+        { "type": "perk", "settings": { "icon": "sun", "text": "Soothing\nLED Light" } },
+        { "type": "perk", "settings": { "icon": "home", "text": "A Unique\nGift Idea" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="{{ request.locale.iso_code }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>
+    {{- page_title -}}
+    {%- if current_tags %} &ndash; {{ current_tags | join: ', ' }}{% endif -%}
+    {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
+    {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
+  </title>
+  {%- if page_description %}<meta name="description" content="{{ page_description | escape }}">{% endif -%}
+  <link rel="canonical" href="{{ canonical_url }}">
+  {%- if settings.favicon != blank -%}
+    <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 64, height: 64 }}">
+  {%- else -%}
+    <link rel="icon" type="image/svg+xml" href="{{ 'favicon.svg' | asset_url }}">
+  {%- endif -%}
+  <meta name="theme-color" content="{{ settings.color_navy }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  {{ content_for_header }}
+
+  <style>
+    :root {
+      --navy: {{ settings.color_navy }};
+      --blue: {{ settings.color_accent }};
+      --bg: {{ settings.color_background }};
+    }
+  </style>
+  {{ 'cosmos.css' | asset_url | stylesheet_tag }}
+  <script>
+    window.cosmos = {
+      routes: {
+        cart: {{ routes.cart_url | json }},
+        cartAdd: {{ routes.cart_add_url | json }},
+        cartChange: {{ routes.cart_change_url | json }},
+        root: {{ routes.root_url | json }}
+      },
+      strings: {
+        addToCart: {{ 'Add to Cart' | json }},
+        added: {{ 'Added ✓' | json }},
+        soldOut: {{ 'Sold out' | json }},
+        unavailable: {{ 'Unavailable' | json }}
+      }
+    };
+  </script>
+  <script src="{{ 'cosmos.js' | asset_url }}" defer></script>
+</head>
+<body class="template-{{ template.name | handleize }}">
+  <a class="skip-link sr-only" href="#MainContent">Skip to content</a>
+
+  {% sections 'header-group' %}
+
+  <main id="MainContent" role="main">
+    {{ content_for_layout }}
+  </main>
+
+  {% sections 'footer-group' %}
+
+  {% section 'cart-drawer' %}
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

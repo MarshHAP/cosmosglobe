@@ -1,0 +1,20 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "badge_1": { "type": "badge", "settings": { "icon": "truck", "text": "Worldwide\nShipping" } },
+        "badge_2": { "type": "badge", "settings": { "icon": "shield", "text": "30-Day\nGuarantee" } },
+        "badge_3": { "type": "badge", "settings": { "icon": "lock", "text": "Secure\nCheckout" } }
+      },
+      "block_order": ["badge_1", "badge_2", "badge_3"],
+      "settings": {
+        "show_rating": true,
+        "rating_score": "4.9",
+        "rating_count": "377",
+        "price_note": "Price includes VAT"
+      }
+    }
+  },
+  "order": ["main"]
+}

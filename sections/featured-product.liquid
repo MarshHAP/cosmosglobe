@@ -1,0 +1,55 @@
+{%- assign product = section.settings.product -%}
+<section class="product" id="shop" data-section-id="{{ section.id }}">
+  <div class="container">
+    {%- render 'product-card', product: product, section: section -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Featured product",
+  "tag": "section",
+  "settings": [
+    { "type": "product", "id": "product", "label": "Product" },
+    { "type": "text", "id": "subtitle", "label": "Subtitle", "default": "Education Novelty Ball Light Desk Bookshelf Home Decoration" },
+    { "type": "checkbox", "id": "show_rating", "label": "Show star rating", "default": true },
+    { "type": "text", "id": "rating_score", "label": "Rating score", "default": "4.9" },
+    { "type": "text", "id": "rating_count", "label": "Number of reviews", "default": "377" },
+    { "type": "text", "id": "price_note", "label": "Price note", "default": "Price includes VAT" },
+    { "type": "text", "id": "promo_text", "label": "Promo banner text", "default": "£6.00 off on £49.00", "info": "Set a compare-at price on the product to calculate this automatically." }
+  ],
+  "blocks": [
+    {
+      "type": "badge",
+      "name": "Trust badge",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "default": "truck",
+          "options": [
+            { "value": "truck", "label": "Truck" },
+            { "value": "shield", "label": "Shield" },
+            { "value": "lock", "label": "Lock" },
+            { "value": "heart", "label": "Heart" },
+            { "value": "globe", "label": "Globe" }
+          ]
+        },
+        { "type": "textarea", "id": "text", "label": "Text", "default": "Worldwide\nShipping" }
+      ]
+    }
+  ],
+  "max_blocks": 4,
+  "presets": [
+    {
+      "name": "Featured product",
+      "blocks": [
+        { "type": "badge", "settings": { "icon": "truck", "text": "Worldwide\nShipping" } },
+        { "type": "badge", "settings": { "icon": "shield", "text": "30-Day\nGuarantee" } },
+        { "type": "badge", "settings": { "icon": "lock", "text": "Secure\nCheckout" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

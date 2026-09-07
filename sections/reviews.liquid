@@ -1,0 +1,52 @@
+<section class="reviews" id="reviews">
+  <div class="container">
+    {%- if section.settings.eyebrow != blank -%}<p class="eyebrow eyebrow--center">{{ section.settings.eyebrow | escape }}</p>{%- endif -%}
+    {%- if section.settings.heading != blank -%}<h2 class="h2">{{ section.settings.heading | escape }}</h2>{%- endif -%}
+    {%- if section.blocks.size > 0 -%}
+      <ul class="reviews__grid">
+        {%- for block in section.blocks -%}
+          <li class="review" {{ block.shopify_attributes }}>
+            <span class="stars" aria-label="{{ block.settings.stars }} out of 5 stars">
+              {%- for i in (1..block.settings.stars) -%}★{%- endfor -%}
+            </span>
+            <blockquote>“{{ block.settings.quote | escape }}”</blockquote>
+            <cite>— {{ block.settings.author | escape }}</cite>
+          </li>
+        {%- endfor -%}
+      </ul>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Reviews",
+  "tag": "section",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Real people. Real wonder." },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "What Our Customers Think" }
+  ],
+  "blocks": [
+    {
+      "type": "review",
+      "name": "Review",
+      "settings": [
+        { "type": "range", "id": "stars", "label": "Stars", "min": 1, "max": 5, "step": 1, "default": 5 },
+        { "type": "textarea", "id": "quote", "label": "Quote", "default": "Absolutely love this! It looks incredible on my desk and always gets compliments." },
+        { "type": "text", "id": "author", "label": "Author", "default": "Sophie L." }
+      ]
+    }
+  ],
+  "max_blocks": 6,
+  "presets": [
+    {
+      "name": "Reviews",
+      "blocks": [
+        { "type": "review", "settings": { "quote": "Absolutely love this! It looks incredible on my desk and always gets compliments. The floating globe is so mesmerising.", "author": "Sophie L." } },
+        { "type": "review", "settings": { "quote": "Such a cool and unique product. The light at night is beautiful and creates a really calming atmosphere.", "author": "Daniel M." } },
+        { "type": "review", "settings": { "quote": "Bought this as a gift for my son and he’s obsessed! It’s educational, stylish and just looks magical.", "author": "Emma T." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,44 @@
+<section class="page-section">
+  <div class="container container--narrow">
+    <h1 class="h2">Log in</h1>
+
+    <div class="account">
+      <div class="account__card">
+        {%- form 'customer_login', class: 'form' -%}
+          {{ form.errors | default_errors }}
+          <label for="CustomerEmail">Email</label>
+          <input id="CustomerEmail" type="email" name="customer[email]" autocomplete="email" required>
+          <label for="CustomerPassword">Password</label>
+          <input id="CustomerPassword" type="password" name="customer[password]" autocomplete="current-password" required>
+          <button class="btn btn--primary" type="submit">Log in</button>
+          <div class="form__links">
+            <a href="#recover">Forgot your password?</a>
+            <a href="{{ routes.account_register_url }}">Create account</a>
+          </div>
+        {%- endform -%}
+      </div>
+
+      <div class="account__card" id="recover">
+        <h2>Reset your password</h2>
+        {%- form 'recover_customer_password', class: 'form' -%}
+          {{ form.errors | default_errors }}
+          {%- if form.posted_successfully? -%}
+            <p class="newsletter__msg">We've sent you an email with a link to update your password.</p>
+          {%- endif -%}
+          <label for="RecoverEmail">Email</label>
+          <input id="RecoverEmail" type="email" name="email" autocomplete="email" required>
+          <button class="btn btn--ghost" type="submit">Send reset link</button>
+        {%- endform -%}
+      </div>
+
+      {%- if shop.checkout.guest_login -%}
+        <div class="account__card">
+          <h2>Continue as a guest</h2>
+          {%- form 'guest_login' -%}
+            <button class="btn btn--ghost" type="submit">Continue</button>
+          {%- endform -%}
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</section>

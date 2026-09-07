@@ -1,0 +1,46 @@
+<section class="product product--page" data-section-id="{{ section.id }}">
+  <div class="container">
+    {%- render 'product-card', product: product, section: section -%}
+    {%- if product.description != blank -%}
+      <div class="rte product__description">{{ product.description }}</div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Product page",
+  "tag": "section",
+  "settings": [
+    { "type": "text", "id": "subtitle", "label": "Subtitle" },
+    { "type": "checkbox", "id": "show_rating", "label": "Show star rating", "default": true },
+    { "type": "text", "id": "rating_score", "label": "Rating score", "default": "4.9" },
+    { "type": "text", "id": "rating_count", "label": "Number of reviews", "default": "377" },
+    { "type": "text", "id": "price_note", "label": "Price note", "default": "Price includes VAT" },
+    { "type": "text", "id": "promo_text", "label": "Promo banner text", "info": "Set a compare-at price on the product to calculate this automatically." }
+  ],
+  "blocks": [
+    {
+      "type": "badge",
+      "name": "Trust badge",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "default": "truck",
+          "options": [
+            { "value": "truck", "label": "Truck" },
+            { "value": "shield", "label": "Shield" },
+            { "value": "lock", "label": "Lock" },
+            { "value": "heart", "label": "Heart" },
+            { "value": "globe", "label": "Globe" }
+          ]
+        },
+        { "type": "textarea", "id": "text", "label": "Text", "default": "Worldwide\nShipping" }
+      ]
+    }
+  ],
+  "max_blocks": 4
+}
+{% endschema %}

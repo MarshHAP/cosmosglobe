@@ -1,0 +1,102 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "blocks": {
+        "perk_1": { "type": "perk", "settings": { "icon": "book", "text": "Educational\n& Inspiring" } },
+        "perk_2": { "type": "perk", "settings": { "icon": "sun", "text": "Soothing\nLED Light" } },
+        "perk_3": { "type": "perk", "settings": { "icon": "home", "text": "A Unique\nGift Idea" } }
+      },
+      "block_order": ["perk_1", "perk_2", "perk_3"],
+      "settings": {
+        "eyebrow": "More than a decoration",
+        "heading": "<p>A Brighter<br>Perspective</p>",
+        "text": "A floating globe that inspires curiosity, brings calm to your space, and reminds you how extraordinary our world is.",
+        "tag_line_1": "A smaller\nworld",
+        "tag_line_2": "A brighter\nyou"
+      }
+    },
+    "featured_product": {
+      "type": "featured-product",
+      "blocks": {
+        "badge_1": { "type": "badge", "settings": { "icon": "truck", "text": "Worldwide\nShipping" } },
+        "badge_2": { "type": "badge", "settings": { "icon": "shield", "text": "30-Day\nGuarantee" } },
+        "badge_3": { "type": "badge", "settings": { "icon": "lock", "text": "Secure\nCheckout" } }
+      },
+      "block_order": ["badge_1", "badge_2", "badge_3"],
+      "settings": {
+        "subtitle": "Education Novelty Ball Light Desk Bookshelf Home Decoration",
+        "show_rating": true,
+        "rating_score": "4.9",
+        "rating_count": "377",
+        "price_note": "Price includes VAT",
+        "promo_text": "£6.00 off on £49.00"
+      }
+    },
+    "reviews": {
+      "type": "reviews",
+      "blocks": {
+        "review_1": { "type": "review", "settings": { "stars": 5, "quote": "Absolutely love this! It looks incredible on my desk and always gets compliments. The floating globe is so mesmerising.", "author": "Sophie L." } },
+        "review_2": { "type": "review", "settings": { "stars": 5, "quote": "Such a cool and unique product. The light at night is beautiful and creates a really calming atmosphere.", "author": "Daniel M." } },
+        "review_3": { "type": "review", "settings": { "stars": 5, "quote": "Bought this as a gift for my son and he’s obsessed! It’s educational, stylish and just looks magical.", "author": "Emma T." } }
+      },
+      "block_order": ["review_1", "review_2", "review_3"],
+      "settings": { "eyebrow": "Real people. Real wonder.", "heading": "What Our Customers Think" }
+    },
+    "feature": {
+      "type": "feature",
+      "blocks": {
+        "point_1": { "type": "point", "settings": { "icon": "globe", "text": "Levitates\nMagnetically" } },
+        "point_2": { "type": "point", "settings": { "icon": "sun", "text": "Soothing\nLED Light" } },
+        "point_3": { "type": "point", "settings": { "icon": "home", "text": "Perfect For\nHome & Office" } },
+        "point_4": { "type": "point", "settings": { "icon": "heart", "text": "Great For\nAll Ages" } }
+      },
+      "block_order": ["point_1", "point_2", "point_3", "point_4"],
+      "settings": {
+        "eyebrow": "Beauty in motion",
+        "heading": "<p>Bring the World<br>to Your Space</p>",
+        "text": "A mesmerising floating globe that spins gently in mid-air, powered by magnetic levitation. With soft, ambient LED lighting, it transforms any room into a place of wonder, focus and inspiration.",
+        "button_label": "Explore COSMOS"
+      }
+    },
+    "video": {
+      "type": "video",
+      "blocks": {
+        "point_1": { "type": "point", "settings": { "icon": "moon", "text": "Calming\nAtmosphere" } },
+        "point_2": { "type": "point", "settings": { "icon": "mute", "text": "Distraction Free" } },
+        "point_3": { "type": "point", "settings": { "icon": "sparkle", "text": "A Timeless\nConversation Piece" } }
+      },
+      "block_order": ["point_1", "point_2", "point_3"],
+      "settings": {
+        "eyebrow": "No music. Just magic.",
+        "heading": "Pure Atmosphere",
+        "text": "Our levitating globe is designed for one purpose — to bring beauty, calm and inspiration into your space. No noise, no distractions, just the mesmerising sight of a floating world and a soft, ambient glow.",
+        "play_label": "Play Video"
+      }
+    },
+    "faq": {
+      "type": "faq",
+      "blocks": {
+        "q1": { "type": "question", "settings": { "question": "Does it come pre-installed with a globe?", "answer": "<p>Yes. Every COSMOS ships with the C-shaped levitation stand, the matching globe, and a power adapter for your region. Nothing else is needed.</p>" } },
+        "q2": { "type": "question", "settings": { "question": "What countries are shown on the globe?", "answer": "<p>The globe is a full political map of the world with country outlines, names and major cities printed in English.</p>" } },
+        "q3": { "type": "question", "settings": { "question": "Is there any music or sound?", "answer": "<p>No. COSMOS is completely silent. There are no speakers, fans or moving parts in the stand, just the quiet magic of magnetic levitation.</p>" } },
+        "q4": { "type": "question", "settings": { "question": "What's in the box?", "answer": "<p>1 × levitation stand with LED lighting, 1 × magnetic globe, 1 × power adapter with the plug you selected, and a quick-start guide.</p>" } },
+        "q5": { "type": "question", "settings": { "question": "How long does delivery take?", "answer": "<p>Shipping is free worldwide. UK orders typically arrive in 3–5 working days, and international orders in 7–14 working days. You'll receive a tracking link by email.</p>" } },
+        "q6": { "type": "question", "settings": { "question": "What if it stops levitating?", "answer": "<p>Simply lift the globe off, unplug the stand for 10 seconds, plug it back in and reposition the globe. If it still won't float, contact us and we'll replace it under our 30-day guarantee.</p>" } }
+      },
+      "block_order": ["q1", "q2", "q3", "q4", "q5", "q6"],
+      "settings": { "eyebrow": "Have questions?", "heading": "Frequently asked questions" }
+    },
+    "setup": {
+      "type": "setup-steps",
+      "blocks": {
+        "step_1": { "type": "step", "settings": { "title": "Connect & Power", "text": "Plug in the power cable and place the stand on a flat surface." } },
+        "step_2": { "type": "step", "settings": { "title": "Position the Globe", "text": "Hold the globe between the top and bottom. Slowly move it until you feel it lift and stabilise." } },
+        "step_3": { "type": "step", "settings": { "title": "Enjoy the Magic", "text": "Once it floats, give it a gentle spin and enjoy your world." } }
+      },
+      "block_order": ["step_1", "step_2", "step_3"],
+      "settings": { "eyebrow": "It's simple", "heading": "How to Set This Up", "text": "Get your floating globe ready in just a few steps." }
+    }
+  },
+  "order": ["hero", "featured_product", "reviews", "feature", "video", "faq", "setup"]
+}

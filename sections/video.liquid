@@ -1,0 +1,103 @@
+<section class="atmos" id="video">
+  <div class="container">
+    <div class="atmos__inner">
+      <div class="atmos__media" id="videoBox">
+        {%- if section.settings.poster != blank -%}
+          {{ section.settings.poster | image_url: width: 1400 | image_tag: loading: 'lazy', alt: '' }}
+        {%- else -%}
+          <img src="{{ 'video-still.svg' | asset_url }}" alt="" width="900" height="600" loading="lazy">
+        {%- endif -%}
+        {%- if section.settings.video != blank or section.settings.video_url != blank -%}
+          <button class="play" type="button" id="playBtn" aria-label="Play video" data-video-open>
+            <span class="play__circle" aria-hidden="true">{% render 'icon', icon: 'play' %}</span>
+            <span class="play__label">{{ section.settings.play_label | escape }}</span>
+          </button>
+        {%- endif -%}
+      </div>
+
+      <div class="atmos__copy">
+        {%- if section.settings.eyebrow != blank -%}<p class="eyebrow eyebrow--light">{{ section.settings.eyebrow | escape }}</p>{%- endif -%}
+        <h2 class="atmos__title">{{ section.settings.heading | escape }}</h2>
+        {%- if section.settings.text != blank -%}<p class="atmos__lead">{{ section.settings.text | escape }}</p>{%- endif -%}
+        {%- if section.blocks.size > 0 -%}
+          <ul class="atmos__list">
+            {%- for block in section.blocks -%}
+              <li {{ block.shopify_attributes }}>
+                {% render 'icon', icon: block.settings.icon, size: 'lg' %}
+                <span>{{ block.settings.text | newline_to_br }}</span>
+              </li>
+            {%- endfor -%}
+          </ul>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{%- if section.settings.video != blank or section.settings.video_url != blank -%}
+  <div class="modal" id="videoModal" hidden role="dialog" aria-modal="true" aria-label="{{ section.settings.heading | escape }} video">
+    <div class="modal__backdrop" data-video-close></div>
+    <div class="modal__box">
+      <button class="iconbtn modal__close" type="button" data-video-close aria-label="Close video">{% render 'icon', icon: 'close' %}</button>
+      <div class="modal__video">
+        {%- if section.settings.video != blank -%}
+          {{ section.settings.video | video_tag: controls: true, playsinline: true, preload: 'metadata', image_size: '1100x' }}
+        {%- elsif section.settings.video_url.type == 'youtube' -%}
+          <iframe data-src="https://www.youtube.com/embed/{{ section.settings.video_url.id }}?autoplay=1&rel=0" title="{{ section.settings.heading | escape }}" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+        {%- elsif section.settings.video_url.type == 'vimeo' -%}
+          <iframe data-src="https://player.vimeo.com/video/{{ section.settings.video_url.id }}?autoplay=1" title="{{ section.settings.heading | escape }}" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Video",
+  "tag": "section",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "No music. Just magic." },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Pure Atmosphere" },
+    { "type": "textarea", "id": "text", "label": "Text", "default": "Our levitating globe is designed for one purpose — to bring beauty, calm and inspiration into your space. No noise, no distractions, just the mesmerising sight of a floating world and a soft, ambient glow." },
+    { "type": "text", "id": "play_label", "label": "Play button label", "default": "Play Video" },
+    { "type": "image_picker", "id": "poster", "label": "Cover image", "info": "Leave empty to use the built-in illustration." },
+    { "type": "video", "id": "video", "label": "Video (uploaded)", "info": "Upload under Content › Files." },
+    { "type": "video_url", "id": "video_url", "label": "Or a YouTube / Vimeo link", "accept": ["youtube", "vimeo"] }
+  ],
+  "blocks": [
+    {
+      "type": "point",
+      "name": "Point",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "default": "moon",
+          "options": [
+            { "value": "moon", "label": "Moon" },
+            { "value": "mute", "label": "Mute" },
+            { "value": "sparkle", "label": "Sparkle" },
+            { "value": "sun", "label": "Sun" },
+            { "value": "heart", "label": "Heart" },
+            { "value": "globe", "label": "Globe" }
+          ]
+        },
+        { "type": "textarea", "id": "text", "label": "Text", "default": "Calming\nAtmosphere" }
+      ]
+    }
+  ],
+  "max_blocks": 4,
+  "presets": [
+    {
+      "name": "Video",
+      "blocks": [
+        { "type": "point", "settings": { "icon": "moon", "text": "Calming\nAtmosphere" } },
+        { "type": "point", "settings": { "icon": "mute", "text": "Distraction Free" } },
+        { "type": "point", "settings": { "icon": "sparkle", "text": "A Timeless\nConversation Piece" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
