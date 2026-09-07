@@ -21,7 +21,7 @@
         {%- assign hero_alt = section.settings.image.alt | default: section.settings.heading | strip_html -%}
         {{ section.settings.image | image_url: width: 1200 | image_tag: class: 'hero__img', widths: '600, 900, 1200', sizes: '(max-width: 860px) 90vw, 520px', fetchpriority: 'high', alt: hero_alt }}
       {%- else -%}
-        <img class="hero__img" src="{{ 'hero-globe.svg' | asset_url }}" alt="COSMOS levitating globe lamp with a glowing blue and pink LED ring" width="600" height="600" fetchpriority="high">
+        <img class="hero__img hero__img--photo" src="{{ 'hero-product.jpg' | asset_img_url: '1000x' }}" srcset="{{ 'hero-product.jpg' | asset_img_url: '600x' }} 600w, {{ 'hero-product.jpg' | asset_img_url: '1000x' }} 1000w" sizes="(max-width: 860px) 90vw, 520px" alt="COSMOS levitating globe lamp with a glowing blue and pink LED ring" width="1053" height="928" fetchpriority="high">
       {%- endif -%}
     </div>
 

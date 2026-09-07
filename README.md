@@ -48,4 +48,6 @@ shopify theme check          # lint the theme
 shopify theme dev --store your-store.myshopify.com   # live preview with hot reload
 ```
 
+`product-photos/` holds the original full-resolution product images; optimised copies live in `assets/` and are used as the default gallery, hero, feature and video visuals until a product with its own photos is selected.
+
 `static-preview/` contains a standalone HTML mock-up of the same design that can be opened without Shopify. It is not part of the theme.

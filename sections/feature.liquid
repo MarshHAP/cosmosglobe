@@ -25,7 +25,7 @@
         {%- assign feature_alt = section.settings.image.alt | default: 'COSMOS globe lamp in a living space' -%}
         {{ section.settings.image | image_url: width: 1400 | image_tag: widths: '700, 1000, 1400', sizes: '(max-width: 1080px) 100vw, 60vw', loading: 'lazy', alt: feature_alt }}
       {%- else -%}
-        <img src="{{ 'lifestyle.svg' | asset_url }}" alt="White COSMOS globe lamp on a marble side table next to a stack of books" width="900" height="600" loading="lazy">
+        <img src="{{ 'feature-desk.jpg' | asset_img_url: '1400x' }}" srcset="{{ 'feature-desk.jpg' | asset_img_url: '700x' }} 700w, {{ 'feature-desk.jpg' | asset_img_url: '1400x' }} 1400w" sizes="(max-width: 1080px) 100vw, 60vw" alt="COSMOS globe lamp on a modern desk beside a laptop and plants" width="1254" height="836" loading="lazy">
       {%- endif -%}
     </figure>
   </div>

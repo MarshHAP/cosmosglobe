@@ -423,3 +423,8 @@ legend { padding: 0; }
 .password__form { display: flex; gap: 8px; margin-top: 12px; }
 .password__form input { flex: 1; padding: 10px 14px; border: 1.5px solid var(--line); border-radius: 999px; }
 .shopify-challenge__container { padding: 40px 0; }
+
+/* Product photography */
+.hero__img--photo { border-radius: 28px; -webkit-mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, #000 55%, transparent 100%); mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, #000 55%, transparent 100%); }
+.gallery__main img { border-radius: 12px; }
+.thumb img { border-radius: 6px; }

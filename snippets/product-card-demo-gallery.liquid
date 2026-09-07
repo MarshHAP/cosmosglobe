@@ -1,15 +1,15 @@
-{%- comment -%} Built-in illustration gallery, used when a product has no images or no product is assigned. {%- endcomment -%}
-{%- assign names = 'silver,pink,aqua,black,midnight,gold' | split: ',' -%}
+{%- comment -%} Built-in product photo gallery, used when a product has no images or no product is assigned. {%- endcomment -%}
+{%- assign shots = 'pdp-1-hero,pdp-2-reveal,pdp-3-mechanism,pdp-4-details,pdp-5-night,pdp-6-desk,pdp-7-compare,pdp-8-specs,pdp-9-box' | split: ',' -%}
 <ul class="gallery__thumbs" aria-label="Product images">
-  {%- for name in names -%}
-    {%- assign file = 'globe-' | append: name | append: '.svg' -%}
+  {%- for shot in shots -%}
+    {%- assign file = shot | append: '.jpg' -%}
     <li>
-      <button type="button" class="thumb{% if name == 'black' %} is-active{% endif %}" data-thumb data-src="{{ file | asset_url }}" aria-label="{{ name | capitalize }}">
-        <img src="{{ file | asset_url }}" alt="" width="60" height="60" loading="lazy">
+      <button type="button" class="thumb{% if forloop.first %} is-active{% endif %}" data-thumb data-src="{{ file | asset_img_url: '1000x' }}" aria-label="Product image {{ forloop.index }}">
+        <img src="{{ file | asset_img_url: '160x' }}" alt="" width="60" height="60" loading="lazy">
       </button>
     </li>
   {%- endfor -%}
 </ul>
 <div class="gallery__main">
-  <img id="MainImage-{{ section.id }}" data-main-image src="{{ 'globe-black.svg' | asset_url }}" alt="COSMOS Magnetic Levitating Globe Lamp in Black" width="600" height="600">
+  <img id="MainImage-{{ section.id }}" data-main-image src="{{ 'pdp-1-hero.jpg' | asset_img_url: '1000x' }}" alt="COSMOS Magnetic Levitating Globe Lamp" width="1000" height="1000">
 </div>

@@ -5,7 +5,7 @@
         {%- if section.settings.poster != blank -%}
           {{ section.settings.poster | image_url: width: 1400 | image_tag: loading: 'lazy', alt: '' }}
         {%- else -%}
-          <img src="{{ 'video-still.svg' | asset_url }}" alt="" width="900" height="600" loading="lazy">
+          <img src="{{ 'video-poster.jpg' | asset_img_url: '1400x' }}" alt="" width="1254" height="836" loading="lazy">
         {%- endif -%}
         {%- if section.settings.video != blank or section.settings.video_url != blank -%}
           <button class="play" type="button" id="playBtn" aria-label="Play video" data-video-open>
