@@ -76,7 +76,7 @@
         "type": "text",
         "id": "cart_note",
         "label": "Cart drawer note",
-        "default": "Free worldwide shipping. VAT included."
+        "default": "Shipping calculated at checkout. VAT included."
       }
     ]
   }

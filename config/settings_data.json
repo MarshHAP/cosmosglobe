@@ -6,7 +6,7 @@
     "color_accent": "#2563eb",
     "color_background": "#f4f6fa",
     "cart_drawer": true,
-    "cart_note": "Free worldwide shipping. VAT included."
+    "cart_note": "Shipping calculated at checkout. VAT included."
   },
   "presets": {}
 }

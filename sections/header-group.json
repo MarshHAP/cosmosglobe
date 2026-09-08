@@ -5,7 +5,7 @@
     "announcement": {
       "type": "announcement-bar",
       "blocks": {
-        "shipping": { "type": "message", "settings": { "text": "Free worldwide shipping", "bold": false } },
+        "shipping": { "type": "message", "settings": { "text": "Fast worldwide shipping", "bold": false } },
         "guarantee": { "type": "message", "settings": { "text": "30-day money-back guarantee", "bold": false } },
         "brand": { "type": "message", "settings": { "text": "A brighter world awaits", "bold": true } }
       },

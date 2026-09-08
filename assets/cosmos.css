@@ -446,3 +446,18 @@ legend { padding: 0; }
 .delivery .ico { color: var(--navy); flex: none; margin-top: 1px; }
 .delivery strong { color: var(--navy); font-weight: 600; }
 .buybox .trust { margin-top: 20px; padding-top: 18px; border-top: 1px solid var(--line); }
+
+/* Shipping protection add-on */
+.protect { display: flex; align-items: flex-start; gap: 12px; margin-top: 18px; padding: 12px 14px; border: 1.5px solid var(--line); border-radius: 10px; background: #fff; cursor: pointer; transition: border-color .15s, box-shadow .15s; }
+.protect:hover { border-color: #b8c2d3; }
+.protect input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.protect__box { flex: none; width: 20px; height: 20px; margin-top: 1px; border: 1.5px solid #b8c2d3; border-radius: 6px; background: #fff; position: relative; transition: all .15s; }
+.protect__box::after { content: ""; position: absolute; left: 6px; top: 2px; width: 5px; height: 10px; border: solid #fff; border-width: 0 2px 2px 0; transform: rotate(45deg) scale(0); transition: transform .15s; }
+.protect:has(input:checked) { border-color: var(--blue); box-shadow: 0 0 0 1px var(--blue); background: var(--blue-soft); }
+.protect:has(input:checked) .protect__box { background: var(--blue); border-color: var(--blue); }
+.protect:has(input:checked) .protect__box::after { transform: rotate(45deg) scale(1); }
+.protect:has(input:focus-visible) { outline: 2px solid var(--blue); outline-offset: 2px; }
+.protect__text { display: flex; flex-direction: column; gap: 2px; font-size: 14px; color: var(--navy); }
+.protect__title { font-weight: 600; }
+.protect__title em { font-style: normal; font-weight: 600; color: var(--blue); margin-left: 4px; }
+.protect__text small { font-size: 12.5px; color: var(--muted); }

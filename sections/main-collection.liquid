@@ -9,6 +9,7 @@
       {%- else -%}
         <ul class="grid-products">
           {%- for product in collection.products -%}
+            {%- if product.tags contains 'hidden' -%}{%- continue -%}{%- endif -%}
             <li class="pcard">
               <a href="{{ product.url }}" class="pcard__media">
                 {%- if product.featured_media -%}

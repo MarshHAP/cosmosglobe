@@ -110,6 +110,18 @@
         {%- endfor -%}
       {%- endunless -%}
 
+      {%- assign protection = section.settings.protection_product -%}
+      {%- if protection != blank and protection.available -%}
+        <label class="protect">
+          <input type="checkbox" name="protection" value="{{ protection.selected_or_first_available_variant.id }}" data-protection {% if section.settings.protection_default %}checked{% endif %}>
+          <span class="protect__box" aria-hidden="true"></span>
+          <span class="protect__text">
+            <span class="protect__title">{{ section.settings.protection_label | default: 'Add Shipping Protection' | escape }} <em>+{{ protection.selected_or_first_available_variant.price | money }}</em></span>
+            {%- if section.settings.protection_text != blank -%}<small>{{ section.settings.protection_text | escape }}</small>{%- endif -%}
+          </span>
+        </label>
+      {%- endif -%}
+
       <input type="hidden" name="id" value="{{ current.id }}" data-variant-id>
       <button class="btn btn--primary btn--block" type="submit" name="add" data-add-to-cart {% unless current.available %}disabled{% endunless %}>
         {% render 'icon', icon: 'cart' %}
@@ -153,7 +165,7 @@
       <h2 class="buybox__title">COSMOS Magnetic Levitating Globe Lamp</h2>
       <p class="buybox__sub">{{ section.settings.subtitle | default: 'Education Novelty Ball Light Desk Bookshelf Home Decoration' | escape }}</p>
       <a class="rating" href="#reviews"><span class="stars" aria-hidden="true">★★★★★</span><span class="rating__score">4.9</span><span class="rating__count">(377 reviews)</span></a>
-      <div class="price"><span class="price__now">{{ 3999 | money }}</span><span class="price__vat">{{ section.settings.price_note | default: 'Price includes VAT' | escape }}</span></div>
+      <div class="price"><span class="price__now">{{ 2999 | money }}</span><span class="price__vat">{{ section.settings.price_note | default: 'Price includes VAT' | escape }}</span></div>
       <div class="option">
         <label class="option__label" for="DemoSize-{{ section.id }}">Plug: <span>UK plug</span></label>
         <div class="select">
@@ -164,6 +176,10 @@
           {% render 'icon', icon: 'chevron', size: 'chev', class: 'select__chev' %}
         </div>
       </div>
+      <label class="protect">
+        <input type="checkbox" disabled><span class="protect__box" aria-hidden="true"></span>
+        <span class="protect__text"><span class="protect__title">Add Shipping Protection <em>+{{ 199 | money }}</em></span><small>Covers loss, theft or damage in transit.</small></span>
+      </label>
       <button class="btn btn--primary btn--block" type="button" data-demo-add="Select a product for this section in the theme editor to enable Add to Cart." aria-describedby="DemoHint-{{ section.id }}">{% render 'icon', icon: 'cart' %}<span>Add to Cart</span></button>
       {%- render 'buybox-extras', section: section -%}
       <p class="buybox__hint" id="DemoHint-{{ section.id }}">Select a product for this section in the theme editor to make it shoppable.</p>

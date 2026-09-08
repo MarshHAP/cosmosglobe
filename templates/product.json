@@ -12,7 +12,8 @@
         "show_rating": true,
         "rating_score": "4.9",
         "rating_count": "377",
-        "price_note": "Price includes VAT"
+        "price_note": "Price includes VAT",
+        "protection_product": "shipping-protection"
       }
     }
   },

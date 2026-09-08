@@ -16,6 +16,7 @@
           <p class="page-lead">{{ search.results_count }} result{% if search.results_count != 1 %}s{% endif %} for “{{ search.terms | escape }}”</p>
           <ul class="grid-products">
             {%- for item in search.results -%}
+            {%- if item.tags contains 'hidden' -%}{%- continue -%}{%- endif -%}
               <li class="pcard">
                 <a href="{{ item.url }}" class="pcard__media">
                   {%- if item.featured_media -%}

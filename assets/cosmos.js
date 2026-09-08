@@ -159,8 +159,10 @@
       const original = addLabel.textContent;
       addBtn.disabled = true; addLabel.textContent = 'Adding…';
       try {
-        const fd = new FormData(form);
-        const res = await fetch(`${cfg.routes.cartAdd}.js`, { method: 'POST', body: fd, headers: { Accept: 'application/json', 'X-Requested-With': 'XMLHttpRequest' } });
+        const items = [{ id: Number(idInput.value), quantity: 1 }];
+        const protection = $('[data-protection]', form);
+        if (protection && protection.checked) items.push({ id: Number(protection.value), quantity: 1 });
+        const res = await fetch(`${cfg.routes.cartAdd}.js`, { method: 'POST', body: JSON.stringify({ items }), headers: { 'Content-Type': 'application/json', Accept: 'application/json', 'X-Requested-With': 'XMLHttpRequest' } });
         let data = {};
         try { data = await res.json(); } catch { data = {}; }
         if (!res.ok) throw new Error(data.description || data.message || 'Could not add to cart');
