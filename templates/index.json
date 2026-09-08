@@ -43,8 +43,9 @@
         "eyebrow": "More than a decoration",
         "heading": "<p>The world</p><p>is yours.</p>",
         "text": "A levitating globe that inspires curiosity, peace, and wonder in every room.",
-        "tag_line_1": "A smaller\nworld",
-        "tag_line_2": "A brighter\nyou"
+        "image": "shopify://shop_images/ChatGPT_Image_Sep_7_2026_03_42_09_PM_2_1.png",
+        "tag_line_1": "",
+        "tag_line_2": ""
       }
     },
     "featured_product": {
@@ -83,7 +84,11 @@
         "show_rating": true,
         "rating_score": "4.9",
         "rating_count": "377",
-        "price_note": "Price includes VAT"
+        "price_note": "Price includes VAT",
+        "show_payment_icons": true,
+        "show_delivery": true,
+        "delivery_min_days": 10,
+        "delivery_max_days": 17
       }
     },
     "reviews": {
