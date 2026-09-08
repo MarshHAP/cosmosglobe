@@ -85,6 +85,14 @@
         "rating_score": "4.9",
         "rating_count": "377",
         "price_note": "Price includes VAT",
+        "show_tiers": true,
+        "tiers_label": "Bundle & save",
+        "tier2_discount": 20,
+        "tier3_discount": 30,
+        "protection_product": "",
+        "protection_label": "Add Shipping Protection",
+        "protection_text": "Covers loss, theft or damage in transit.",
+        "protection_default": false,
         "show_payment_icons": true,
         "show_delivery": true,
         "delivery_min_days": 10,
@@ -135,50 +143,29 @@
         "point_1": {
           "type": "point",
           "settings": {
-            "icon": "sensor",
-            "text": "Sensor-Guided\nLevitation"
+            "icon": "globe",
+            "text": "Levitates\nMagnetically"
           }
         },
         "point_2": {
           "type": "point",
           "settings": {
-            "icon": "magnet",
-            "text": "Self-Correcting\nMagnetic Field"
+            "icon": "sun",
+            "text": "Soothing\nLED Light"
           }
         },
         "point_3": {
           "type": "point",
           "settings": {
-            "icon": "spin",
-            "text": "Frictionless\nFree Spin"
+            "icon": "home",
+            "text": "Perfect For\nHome & Office"
           }
         },
         "point_4": {
           "type": "point",
           "settings": {
-            "icon": "mute",
-            "text": "Silent\nNo Moving Parts"
-          }
-        },
-        "slide_1": {
-          "type": "slide",
-          "settings": {
-            "fallback": "3-mechanism",
-            "caption": ""
-          }
-        },
-        "slide_2": {
-          "type": "slide",
-          "settings": {
-            "fallback": "4-details",
-            "caption": ""
-          }
-        },
-        "slide_3": {
-          "type": "slide",
-          "settings": {
-            "fallback": "8-specs",
-            "caption": ""
+            "icon": "heart",
+            "text": "Great For\nAll Ages"
           }
         }
       },
@@ -186,15 +173,12 @@
         "point_1",
         "point_2",
         "point_3",
-        "point_4",
-        "slide_1",
-        "slide_2",
-        "slide_3"
+        "point_4"
       ],
       "settings": {
-        "eyebrow": "The mechanism",
-        "heading": "<p>It shouldn't work.</p>",
-        "text": "Magnets alone can't hold anything in mid-air. An electromagnet in the upper arm lifts the globe while a sensor tracks its position, adjusting the field hundreds of times a second. What looks perfectly still is correcting itself constantly — silently, and far too fast to see.",
+        "eyebrow": "Beauty in motion",
+        "heading": "<p>Work in peace.</p>",
+        "text": "A mesmerising floating globe that spins gently in mid-air, powered by magnetic levitation. With soft, ambient LED lighting, it transforms any room into a place of wonder, focus and inspiration.",
         "button_label": "Explore COSMOS",
         "button_link": ""
       }
@@ -303,6 +287,7 @@
           "type": "step",
           "settings": {
             "title": "Connect & Power",
+            "image": "shopify://shop_images/ChatGPT_Image_Sep_8_2026_10_12_55_AM.png",
             "text": "Plug in the power cable and place the stand on a flat surface."
           }
         },
