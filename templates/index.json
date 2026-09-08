@@ -286,6 +286,7 @@
           "type": "step",
           "settings": {
             "title": "Position the Globe",
+            "image": "shopify://shop_images/ChatGPT_Image_Sep_8_2026_10_03_51_AM.png",
             "text": "Hold the globe between the top and bottom. Slowly move it until you feel it lift and stabilise."
           }
         },
@@ -293,6 +294,7 @@
           "type": "step",
           "settings": {
             "title": "Enjoy the Magic",
+            "image": "shopify://shop_images/ChatGPT_Image_Sep_8_2026_10_04_20_AM.png",
             "text": "Once it floats, give it a gentle spin and enjoy your world."
           }
         }
