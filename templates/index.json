@@ -80,12 +80,11 @@
       ],
       "settings": {
         "product": "cosmos-magnetic-levitating-globe-lamp",
-        "subtitle": "Education Novelty Ball Light Desk Bookshelf Home Decoration",
+        "subtitle": "",
         "show_rating": true,
         "rating_score": "4.9",
         "rating_count": "377",
         "price_note": "Price includes VAT",
-        "protection_product": "shipping-protection",
         "show_payment_icons": true,
         "show_delivery": true,
         "delivery_min_days": 10,
@@ -249,7 +248,7 @@
           "type": "question",
           "settings": {
             "question": "How long does delivery take?",
-            "answer": "<p>Standard shipping is £4.99. UK orders typically arrive in 3–5 working days, and international orders in 7–14 working days. You'll receive a tracking link by email.</p>"
+            "answer": "<p>Shipping is free worldwide. UK orders typically arrive in 3–5 working days, and international orders in 7–14 working days. You'll receive a tracking link by email.</p>"
           }
         },
         "q6": {
