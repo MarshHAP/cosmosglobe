@@ -146,11 +146,13 @@
     const updateTiers = (priceCents) => {
       tiers.forEach((input) => {
         const qty = Number(input.dataset.qty), disc = Number(input.dataset.discount);
-        const total = Math.floor(priceCents * qty * (100 - disc) / 100);
+        // Same maths as Shopify: per-unit discount truncated to whole cents, times quantity.
+        const each = priceCents - Math.floor(priceCents * disc / 100);
+        const total = each * qty;
         const label = input.closest('.tier');
         const totalEl = $('[data-tier-total]', label), eachEl = $('[data-tier-each]', label);
         if (totalEl) totalEl.textContent = formatMoney(total);
-        if (eachEl) eachEl.textContent = formatMoney(Math.floor(total / qty));
+        if (eachEl) eachEl.textContent = formatMoney(each);
       });
     };
     const selectedQty = () => { const t = tiers.find((i) => i.checked); return t ? Number(t.dataset.qty) || 1 : 1; };

@@ -118,12 +118,16 @@
 
       {%- if section.settings.show_tiers -%}
         {%- liquid
-          assign pct2 = 100 | minus: section.settings.tier2_discount
-          assign pct3 = 100 | minus: section.settings.tier3_discount
-          assign total2 = current.price | times: 2 | times: pct2 | divided_by: 100
-          assign total3 = current.price | times: 3 | times: pct3 | divided_by: 100
-          assign each2 = total2 | divided_by: 2
-          assign each3 = total3 | divided_by: 3
+          comment
+            Mirror Shopify's percentage-discount maths: the per-unit discount is
+            truncated to whole pence, then multiplied by the quantity.
+          endcomment
+          assign off2 = current.price | times: section.settings.tier2_discount | divided_by: 100
+          assign off3 = current.price | times: section.settings.tier3_discount | divided_by: 100
+          assign each2 = current.price | minus: off2
+          assign each3 = current.price | minus: off3
+          assign total2 = each2 | times: 2
+          assign total3 = each3 | times: 3
         -%}
         <fieldset class="tiers" data-tiers>
           <legend class="option__label">{{ section.settings.tiers_label | default: 'Bundle & save' | escape }}</legend>
@@ -222,8 +226,8 @@
       <fieldset class="tiers">
         <legend class="option__label">Bundle & save</legend>
         <label class="tier"><input type="radio" name="demo-tier" checked disabled><span class="tier__qty">1 globe</span><span class="tier__price"><strong>{{ 2999 | money }}</strong></span></label>
-        <label class="tier"><input type="radio" name="demo-tier" disabled><span class="tier__qty">2 globes <em class="tier__badge">Save 20%</em></span><span class="tier__price"><strong>{{ 4798 | money }}</strong><small>{{ 2399 | money }} each</small></span></label>
-        <label class="tier"><input type="radio" name="demo-tier" disabled><span class="tier__qty">3 globes <em class="tier__badge tier__badge--best">Save 30%</em></span><span class="tier__price"><strong>{{ 6297 | money }}</strong><small>{{ 2099 | money }} each</small></span></label>
+        <label class="tier"><input type="radio" name="demo-tier" disabled><span class="tier__qty">2 globes <em class="tier__badge">Save 20%</em></span><span class="tier__price"><strong>{{ 4800 | money }}</strong><small>{{ 2400 | money }} each</small></span></label>
+        <label class="tier"><input type="radio" name="demo-tier" disabled><span class="tier__qty">3 globes <em class="tier__badge tier__badge--best">Save 30%</em></span><span class="tier__price"><strong>{{ 6300 | money }}</strong><small>{{ 2100 | money }} each</small></span></label>
       </fieldset>
       <label class="protect">
         <input type="checkbox" disabled><span class="protect__box" aria-hidden="true"></span>
