@@ -16,12 +16,24 @@
       {%- endif -%}
     </div>
 
-    <div class="hero__visual">
-      {%- if section.settings.image != blank -%}
+    <div class="hero__visual hero__visual--{{ section.settings.media_ratio | default: 'square' }}">
+      {%- if section.settings.video != blank -%}
+        <div class="hero__media">
+          {{ section.settings.video | video_tag: autoplay: true, loop: true, muted: true, controls: false, playsinline: true, preload: 'metadata', image_size: '1200x', class: 'hero__video' }}
+        </div>
+      {%- elsif section.settings.video_url != blank -%}
+        <div class="hero__media hero__media--embed">
+          {%- if section.settings.video_url.type == 'youtube' -%}
+            <iframe src="https://www.youtube-nocookie.com/embed/{{ section.settings.video_url.id }}?autoplay=1&mute=1&loop=1&playlist={{ section.settings.video_url.id }}&controls=0&rel=0&modestbranding=1&playsinline=1" title="{{ section.settings.heading | strip_html | escape }}" allow="autoplay; encrypted-media; picture-in-picture" loading="lazy"></iframe>
+          {%- elsif section.settings.video_url.type == 'vimeo' -%}
+            <iframe src="https://player.vimeo.com/video/{{ section.settings.video_url.id }}?autoplay=1&muted=1&loop=1&background=1" title="{{ section.settings.heading | strip_html | escape }}" allow="autoplay; fullscreen; picture-in-picture" loading="lazy"></iframe>
+          {%- endif -%}
+        </div>
+      {%- elsif section.settings.image != blank -%}
         {%- assign hero_alt = section.settings.image.alt | default: section.settings.heading | strip_html -%}
-        {{ section.settings.image | image_url: width: 1200 | image_tag: class: 'hero__img', widths: '600, 900, 1200', sizes: '(max-width: 860px) 90vw, 520px', fetchpriority: 'high', alt: hero_alt }}
+        {{ section.settings.image | image_url: width: 1200 | image_tag: class: 'hero__img', widths: '600, 900, 1200', sizes: '(max-width: 860px) 100vw, 520px', fetchpriority: 'high', alt: hero_alt }}
       {%- else -%}
-        <img class="hero__img hero__img--photo" src="{{ 'hero-product.jpg' | asset_img_url: '1000x' }}" srcset="{{ 'hero-product.jpg' | asset_img_url: '600x' }} 600w, {{ 'hero-product.jpg' | asset_img_url: '1000x' }} 1000w" sizes="(max-width: 860px) 90vw, 520px" alt="COSMOS levitating globe lamp with a glowing blue and pink LED ring" width="1053" height="928" fetchpriority="high">
+        <img class="hero__img hero__img--photo" src="{{ 'hero-product.jpg' | asset_img_url: '1000x' }}" srcset="{{ 'hero-product.jpg' | asset_img_url: '600x' }} 600w, {{ 'hero-product.jpg' | asset_img_url: '1000x' }} 1000w" sizes="(max-width: 860px) 100vw, 520px" alt="COSMOS levitating globe lamp with a glowing blue and pink LED ring" width="1053" height="928" fetchpriority="high">
       {%- endif -%}
     </div>
 
@@ -44,7 +56,21 @@
     { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "More than a decoration" },
     { "type": "richtext", "id": "heading", "label": "Heading", "default": "<p>A Brighter<br>Perspective</p>" },
     { "type": "textarea", "id": "text", "label": "Text", "default": "A floating globe that inspires curiosity, brings calm to your space, and reminds you how extraordinary our world is." },
-    { "type": "image_picker", "id": "image", "label": "Image", "info": "Leave empty to use the built-in globe illustration." },
+    { "type": "header", "content": "Media" },
+    { "type": "image_picker", "id": "image", "label": "Image", "info": "Leave empty to use the built-in product photo." },
+    { "type": "video", "id": "video", "label": "Video (uploaded)", "info": "Plays automatically, muted and looping. Overrides the image. Upload under Content › Files." },
+    { "type": "video_url", "id": "video_url", "label": "Or a YouTube / Vimeo link", "accept": ["youtube", "vimeo"], "info": "Used when no uploaded video is set." },
+    {
+      "type": "select",
+      "id": "media_ratio",
+      "label": "Video shape",
+      "default": "square",
+      "options": [
+        { "value": "square", "label": "Square (1:1)" },
+        { "value": "landscape", "label": "Landscape (16:9)" },
+        { "value": "portrait", "label": "Portrait (4:5)" }
+      ]
+    },
     { "type": "textarea", "id": "tag_line_1", "label": "Side tag, line 1", "default": "A smaller\nworld" },
     { "type": "textarea", "id": "tag_line_2", "label": "Side tag, line 2", "default": "A brighter\nyou" }
   ],
