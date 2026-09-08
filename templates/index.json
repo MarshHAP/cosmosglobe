@@ -39,6 +39,7 @@
         "perk_2",
         "perk_3"
       ],
+      "disabled": true,
       "settings": {
         "eyebrow": "More than a decoration",
         "heading": "<p>The world</p><p>is yours.</p>",
