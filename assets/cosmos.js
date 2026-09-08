@@ -9,6 +9,28 @@
   const cfg = window.cosmos || { routes: { cart: '/cart', cartAdd: '/cart/add', cartChange: '/cart/change', root: '/' }, strings: {} };
   const S = Object.assign({ addToCart: 'Add to Cart', added: 'Added ✓', soldOut: 'Sold out', unavailable: 'Unavailable' }, cfg.strings);
 
+  /* ---------- Money (mirrors Shopify's money_format) ---------- */
+  const formatMoney = (cents, format = cfg.moneyFormat || '£{{amount}}') => {
+    const num = (Number(cents) || 0) / 100;
+    const fixed = (d, thou = ',', dec = '.') => {
+      const parts = num.toFixed(d).split('.');
+      parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, thou);
+      return parts.length > 1 ? parts[0] + dec + parts[1] : parts[0];
+    };
+    return format.replace(/\{\{\s*(\w+)\s*\}\}/, (m, key) => {
+      switch (key) {
+        case 'amount_no_decimals': return fixed(0);
+        case 'amount_with_comma_separator': return fixed(2, '.', ',');
+        case 'amount_no_decimals_with_comma_separator': return fixed(0, '.', ',');
+        case 'amount_with_apostrophe_separator': return fixed(2, "'", '.');
+        case 'amount_no_decimals_with_space_separator': return fixed(0, ' ', '.');
+        case 'amount_with_space_separator': return fixed(2, ' ', ',');
+        case 'amount_with_period_and_space_separator': return fixed(2, ' ', '.');
+        default: return fixed(2);
+      }
+    });
+  };
+
   /* ---------- Toast ---------- */
   const toastEl = $('#toast');
   let toastTimer;
@@ -120,6 +142,18 @@
     const addBtn = $('[data-add-to-cart]', form);
     const addLabel = $('[data-add-label]', form);
     const priceEl = $('[data-price]', form);
+    const tiers = $$('[data-tier]', form);
+    const updateTiers = (priceCents) => {
+      tiers.forEach((input) => {
+        const qty = Number(input.dataset.qty), disc = Number(input.dataset.discount);
+        const total = Math.floor(priceCents * qty * (100 - disc) / 100);
+        const label = input.closest('.tier');
+        const totalEl = $('[data-tier-total]', label), eachEl = $('[data-tier-each]', label);
+        if (totalEl) totalEl.textContent = formatMoney(total);
+        if (eachEl) eachEl.textContent = formatMoney(Math.floor(total / qty));
+      });
+    };
+    const selectedQty = () => { const t = tiers.find((i) => i.checked); return t ? Number(t.dataset.qty) || 1 : 1; };
     const optionSets = $$('[data-option-index]', form);
 
     const selectedOptions = () => optionSets.map((set) => {
@@ -139,6 +173,7 @@
       }
       idInput.value = match.id;
       if (priceEl) priceEl.textContent = match.price;
+      if (typeof match.price_cents === 'number') updateTiers(match.price_cents);
       addBtn.disabled = !match.available;
       addLabel.textContent = match.available ? S.addToCart : S.soldOut;
       if (match.image) {
@@ -159,7 +194,7 @@
       const original = addLabel.textContent;
       addBtn.disabled = true; addLabel.textContent = 'Adding…';
       try {
-        const items = [{ id: Number(idInput.value), quantity: 1 }];
+        const items = [{ id: Number(idInput.value), quantity: selectedQty() }];
         const protection = $('[data-protection]', form);
         if (protection && protection.checked) items.push({ id: Number(protection.value), quantity: 1 });
         const res = await fetch(`${cfg.routes.cartAdd}.js`, { method: 'POST', body: JSON.stringify({ items }), headers: { 'Content-Type': 'application/json', Accept: 'application/json', 'X-Requested-With': 'XMLHttpRequest' } });

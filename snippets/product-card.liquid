@@ -5,6 +5,7 @@
 {%- endcomment -%}
 {%- liquid
   assign current = product.selected_or_first_available_variant
+  assign swatch_assets = 'black,white' | split: ','
   assign form_id = 'ProductForm-' | append: section.id
 -%}
 
@@ -87,6 +88,11 @@
                         assign swatch_src = variant.featured_image | image_url: width: 120, height: 120
                       endif
                     endfor
+                    assign value_handle = value | handleize
+                    if swatch_src == '' and swatch_assets contains value_handle
+                      assign swatch_file = 'swatch-' | append: value_handle | append: '.jpg'
+                      assign swatch_src = swatch_file | asset_img_url: '120x'
+                    endif
                   -%}
                   <label class="swatch" title="{{ value | escape }}">
                     <input type="radio" id="{{ input_id }}" name="option-{{ opt_idx }}" value="{{ value | escape }}" {% if value == option.selected_value %}checked{% endif %}>
@@ -109,6 +115,35 @@
           {%- endif -%}
         {%- endfor -%}
       {%- endunless -%}
+
+      {%- if section.settings.show_tiers -%}
+        {%- liquid
+          assign pct2 = 100 | minus: section.settings.tier2_discount
+          assign pct3 = 100 | minus: section.settings.tier3_discount
+          assign total2 = current.price | times: 2 | times: pct2 | divided_by: 100
+          assign total3 = current.price | times: 3 | times: pct3 | divided_by: 100
+          assign each2 = total2 | divided_by: 2
+          assign each3 = total3 | divided_by: 3
+        -%}
+        <fieldset class="tiers" data-tiers>
+          <legend class="option__label">{{ section.settings.tiers_label | default: 'Bundle & save' | escape }}</legend>
+          <label class="tier">
+            <input type="radio" name="tier" value="1" data-tier data-qty="1" data-discount="0" checked>
+            <span class="tier__qty">1 globe</span>
+            <span class="tier__price"><strong data-tier-total>{{ current.price | money }}</strong></span>
+          </label>
+          <label class="tier">
+            <input type="radio" name="tier" value="2" data-tier data-qty="2" data-discount="{{ section.settings.tier2_discount }}">
+            <span class="tier__qty">2 globes <em class="tier__badge">Save {{ section.settings.tier2_discount }}%</em></span>
+            <span class="tier__price"><strong data-tier-total>{{ total2 | money }}</strong><small><span data-tier-each>{{ each2 | money }}</span> each</small></span>
+          </label>
+          <label class="tier">
+            <input type="radio" name="tier" value="3" data-tier data-qty="3" data-discount="{{ section.settings.tier3_discount }}">
+            <span class="tier__qty">3 globes <em class="tier__badge tier__badge--best">Save {{ section.settings.tier3_discount }}%</em></span>
+            <span class="tier__price"><strong data-tier-total>{{ total3 | money }}</strong><small><span data-tier-each>{{ each3 | money }}</span> each</small></span>
+          </label>
+        </fieldset>
+      {%- endif -%}
 
       {%- assign protection = section.settings.protection_product -%}
       {%- if protection != blank and protection.available -%}
@@ -150,6 +185,7 @@
               "available": {{ variant.available }},
               "options": {{ variant.options | json }},
               "price": {{ variant.price | money | json }},
+              "price_cents": {{ variant.price }},
               "image": {% if variant.featured_media != blank %}{{ variant.featured_media | image_url: width: 1000 | json }}{% else %}null{% endif %},
               "media_id": {% if variant.featured_media != blank %}{{ variant.featured_media.id }}{% else %}null{% endif %}
             }{% unless forloop.last %},{% endunless %}
@@ -166,6 +202,13 @@
       <p class="buybox__sub">{{ section.settings.subtitle | default: 'Education Novelty Ball Light Desk Bookshelf Home Decoration' | escape }}</p>
       <a class="rating" href="#reviews"><span class="stars" aria-hidden="true">★★★★★</span><span class="rating__score">4.9</span><span class="rating__count">(377 reviews)</span></a>
       <div class="price"><span class="price__now">{{ 2999 | money }}</span><span class="price__vat">{{ section.settings.price_note | default: 'Price includes VAT' | escape }}</span></div>
+      <fieldset class="option">
+        <legend class="option__label">Colour: <span>Black</span></legend>
+        <div class="swatches">
+          <label class="swatch" title="Black"><input type="radio" name="demo-colour" checked disabled><img src="{{ 'swatch-black.jpg' | asset_img_url: '120x' }}" alt="Black" width="54" height="54"></label>
+          <label class="swatch" title="White"><input type="radio" name="demo-colour" disabled><img src="{{ 'swatch-white.jpg' | asset_img_url: '120x' }}" alt="White" width="54" height="54"></label>
+        </div>
+      </fieldset>
       <div class="option">
         <label class="option__label" for="DemoSize-{{ section.id }}">Plug: <span>UK plug</span></label>
         <div class="select">
@@ -176,6 +219,12 @@
           {% render 'icon', icon: 'chevron', size: 'chev', class: 'select__chev' %}
         </div>
       </div>
+      <fieldset class="tiers">
+        <legend class="option__label">Bundle & save</legend>
+        <label class="tier"><input type="radio" name="demo-tier" checked disabled><span class="tier__qty">1 globe</span><span class="tier__price"><strong>{{ 2999 | money }}</strong></span></label>
+        <label class="tier"><input type="radio" name="demo-tier" disabled><span class="tier__qty">2 globes <em class="tier__badge">Save 20%</em></span><span class="tier__price"><strong>{{ 4798 | money }}</strong><small>{{ 2399 | money }} each</small></span></label>
+        <label class="tier"><input type="radio" name="demo-tier" disabled><span class="tier__qty">3 globes <em class="tier__badge tier__badge--best">Save 30%</em></span><span class="tier__price"><strong>{{ 6297 | money }}</strong><small>{{ 2099 | money }} each</small></span></label>
+      </fieldset>
       <label class="protect">
         <input type="checkbox" disabled><span class="protect__box" aria-hidden="true"></span>
         <span class="protect__text"><span class="protect__title">Add Shipping Protection <em>+{{ 199 | money }}</em></span><small>Covers loss, theft or damage in transit.</small></span>
