@@ -15,7 +15,12 @@
     { "type": "checkbox", "id": "show_rating", "label": "Show star rating", "default": true },
     { "type": "text", "id": "rating_score", "label": "Rating score", "default": "4.9" },
     { "type": "text", "id": "rating_count", "label": "Number of reviews", "default": "377" },
-    { "type": "text", "id": "price_note", "label": "Price note", "default": "Price includes VAT" }
+    { "type": "text", "id": "price_note", "label": "Price note", "default": "Price includes VAT" },
+    { "type": "header", "content": "Under the button" },
+    { "type": "checkbox", "id": "show_payment_icons", "label": "Show payment icons", "default": true },
+    { "type": "checkbox", "id": "show_delivery", "label": "Show delivery estimate", "default": true },
+    { "type": "range", "id": "delivery_min_days", "label": "Earliest delivery (days from today)", "min": 1, "max": 30, "step": 1, "default": 10 },
+    { "type": "range", "id": "delivery_max_days", "label": "Latest delivery (days from today)", "min": 1, "max": 45, "step": 1, "default": 17 }
   ],
   "blocks": [
     {

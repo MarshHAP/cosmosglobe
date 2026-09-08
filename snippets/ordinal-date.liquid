@@ -1,0 +1,18 @@
+{%- comment -%} Formats a unix timestamp as "Friday, September 18th". Usage: {% render 'ordinal-date', ts: 1758153600 %} {%- endcomment -%}
+{%- liquid
+  assign day = ts | date: '%-d' | plus: 0
+  assign m100 = day | modulo: 100
+  assign m10 = day | modulo: 10
+  if m100 >= 11 and m100 <= 13
+    assign suffix = 'th'
+  elsif m10 == 1
+    assign suffix = 'st'
+  elsif m10 == 2
+    assign suffix = 'nd'
+  elsif m10 == 3
+    assign suffix = 'rd'
+  else
+    assign suffix = 'th'
+  endif
+-%}
+{{ ts | date: '%A, %B' }} {{ day }}{{ suffix }}

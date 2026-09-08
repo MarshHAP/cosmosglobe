@@ -115,6 +115,7 @@
         {% render 'icon', icon: 'cart' %}
         <span data-add-label>{% if current.available %}Add to Cart{% else %}Sold out{% endif %}</span>
       </button>
+      {%- render 'buybox-extras', section: section -%}
 
       {%- if section.blocks.size > 0 -%}
         <ul class="trust">
@@ -154,7 +155,7 @@
       <a class="rating" href="#reviews"><span class="stars" aria-hidden="true">★★★★★</span><span class="rating__score">4.9</span><span class="rating__count">(377 reviews)</span></a>
       <div class="price"><span class="price__now">{{ 3999 | money }}</span><span class="price__vat">{{ section.settings.price_note | default: 'Price includes VAT' | escape }}</span></div>
       <div class="option">
-        <label class="option__label" for="DemoSize-{{ section.id }}">Size: <span>UK plug</span></label>
+        <label class="option__label" for="DemoSize-{{ section.id }}">Plug: <span>UK plug</span></label>
         <div class="select">
           <select id="DemoSize-{{ section.id }}" class="select__field" disabled>
             {%- assign plugs = 'EU plug,US plug,UK plug,AU plug' | split: ',' -%}
@@ -164,6 +165,7 @@
         </div>
       </div>
       <button class="btn btn--primary btn--block" type="button" data-demo-add="Select a product for this section in the theme editor to enable Add to Cart." aria-describedby="DemoHint-{{ section.id }}">{% render 'icon', icon: 'cart' %}<span>Add to Cart</span></button>
+      {%- render 'buybox-extras', section: section -%}
       <p class="buybox__hint" id="DemoHint-{{ section.id }}">Select a product for this section in the theme editor to make it shoppable.</p>
       {%- if section.blocks.size > 0 -%}
         <ul class="trust">

@@ -1,0 +1,15 @@
+{%- comment -%}
+  Delivery window, e.g. "Get it between Friday, September 18th and Friday, September 25th."
+  Usage: {% render 'delivery-estimate', min_days: 10, max_days: 17 %}
+{%- endcomment -%}
+{%- liquid
+  assign now_ts = 'now' | date: '%s' | plus: 0
+  assign start_ts = min_days | times: 86400 | plus: now_ts
+  assign end_ts = max_days | times: 86400 | plus: now_ts
+-%}
+{%- capture start_date -%}{%- render 'ordinal-date', ts: start_ts -%}{%- endcapture -%}
+{%- capture end_date -%}{%- render 'ordinal-date', ts: end_ts -%}{%- endcapture -%}
+<p class="delivery">
+  {% render 'icon', icon: 'truck' %}
+  <span>Get it between <strong>{{ start_date | strip }}</strong> and <strong>{{ end_date | strip }}</strong>.</span>
+</p>

@@ -436,3 +436,13 @@ legend { padding: 0; }
 .select__field:focus-visible { outline: none; border-color: var(--blue); box-shadow: 0 0 0 1.5px var(--blue); }
 .select__field:disabled { cursor: default; color: var(--ink); opacity: 1; }
 .select__chev { position: absolute; right: 16px; top: 50%; transform: translateY(-50%); pointer-events: none; color: var(--muted); }
+
+/* Under the Add to Cart button */
+.buybox [data-add-to-cart], .buybox [data-demo-add] { margin-top: 22px; }
+.payment-icons { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin-top: 16px; }
+.payment-icons li { display: flex; }
+.payment-icon { width: 38px; height: 24px; border-radius: 4px; }
+.delivery { display: flex; align-items: flex-start; gap: 10px; margin-top: 16px; font-size: 13.5px; color: var(--muted); line-height: 1.5; }
+.delivery .ico { color: var(--navy); flex: none; margin-top: 1px; }
+.delivery strong { color: var(--navy); font-weight: 600; }
+.buybox .trust { margin-top: 20px; padding-top: 18px; border-top: 1px solid var(--line); }
