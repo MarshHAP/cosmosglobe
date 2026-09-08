@@ -148,8 +148,8 @@
           {%- endfor -%}
         </div>
       </fieldset>
-      <button class="btn btn--primary btn--block" type="button" disabled title="Select a product in the theme editor">{% render 'icon', icon: 'cart' %}<span>Add to Cart</span></button>
-      <p class="buybox__hint">Select a product for this section in the theme editor to make it shoppable.</p>
+      <button class="btn btn--primary btn--block" type="button" data-demo-add="Select a product for this section in the theme editor to enable Add to Cart." aria-describedby="DemoHint-{{ section.id }}">{% render 'icon', icon: 'cart' %}<span>Add to Cart</span></button>
+      <p class="buybox__hint" id="DemoHint-{{ section.id }}">Select a product for this section in the theme editor to make it shoppable.</p>
       {%- if section.blocks.size > 0 -%}
         <ul class="trust">
           {%- for block in section.blocks -%}

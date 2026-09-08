@@ -79,9 +79,9 @@
       const line = Number(qtyBtn.dataset.line);
       const quantity = Number(qtyBtn.dataset.cartQty);
       qtyBtn.disabled = true;
-      fetch(cfg.routes.cartChange, {
+      fetch(`${cfg.routes.cartChange}.js`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json', 'X-Requested-With': 'XMLHttpRequest' },
         body: JSON.stringify({ line, quantity }),
       })
         .then((r) => { if (!r.ok) throw new Error('change failed'); return refreshCart(); })
@@ -158,8 +158,9 @@
       addBtn.disabled = true; addLabel.textContent = 'Adding…';
       try {
         const fd = new FormData(form);
-        const res = await fetch(cfg.routes.cartAdd, { method: 'POST', body: fd, headers: { Accept: 'application/json' } });
-        const data = await res.json();
+        const res = await fetch(`${cfg.routes.cartAdd}.js`, { method: 'POST', body: fd, headers: { Accept: 'application/json', 'X-Requested-With': 'XMLHttpRequest' } });
+        let data = {};
+        try { data = await res.json(); } catch { data = {}; }
         if (!res.ok) throw new Error(data.description || data.message || 'Could not add to cart');
         addBtn.classList.add('is-added'); addLabel.textContent = S.added;
         setTimeout(() => { addBtn.classList.remove('is-added'); addLabel.textContent = original; }, 1400);
@@ -173,6 +174,9 @@
       }
     });
   });
+
+  /* ---------- Demo product card (no product selected yet) ---------- */
+  $$('[data-demo-add]').forEach((btn) => btn.addEventListener('click', () => toast(btn.dataset.demoAdd)));
 
   /* ---------- Video modal ---------- */
   const modal = $('#videoModal');
