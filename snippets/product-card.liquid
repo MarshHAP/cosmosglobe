@@ -61,9 +61,22 @@
               assign is_color = true
             endif
           -%}
+          {%- if is_color == false -%}
+            <div class="option" data-option-index="{{ opt_idx }}">
+              <label class="option__label" for="{{ form_id }}-select-{{ opt_idx }}">{{ option.name | escape }}: <span data-option-value>{{ option.selected_value | escape }}</span></label>
+              <div class="select">
+                <select id="{{ form_id }}-select-{{ opt_idx }}" name="option-{{ opt_idx }}" class="select__field">
+                  {%- for value in option.values -%}
+                    <option value="{{ value | escape }}" {% if value == option.selected_value %}selected{% endif %}>{{ value | escape }}</option>
+                  {%- endfor -%}
+                </select>
+                {% render 'icon', icon: 'chevron', size: 'chev', class: 'select__chev' %}
+              </div>
+            </div>
+          {%- else -%}
           <fieldset class="option" data-option-index="{{ opt_idx }}">
             <legend class="option__label">{{ option.name | escape }}: <span data-option-value>{{ option.selected_value | escape }}</span></legend>
-            <div class="{% if is_color %}swatches{% else %}pills{% endif %}">
+            <div class="swatches">
               {%- for value in option.values -%}
                 {%- assign input_id = form_id | append: '-' | append: opt_idx | append: '-' | append: forloop.index -%}
                 {%- if is_color -%}
@@ -93,6 +106,7 @@
               {%- endfor -%}
             </div>
           </fieldset>
+          {%- endif -%}
         {%- endfor -%}
       {%- endunless -%}
 
@@ -139,15 +153,16 @@
       <p class="buybox__sub">{{ section.settings.subtitle | default: 'Education Novelty Ball Light Desk Bookshelf Home Decoration' | escape }}</p>
       <a class="rating" href="#reviews"><span class="stars" aria-hidden="true">★★★★★</span><span class="rating__score">4.9</span><span class="rating__count">(377 reviews)</span></a>
       <div class="price"><span class="price__now">{{ 3999 | money }}</span><span class="price__vat">{{ section.settings.price_note | default: 'Price includes VAT' | escape }}</span></div>
-      <fieldset class="option">
-        <legend class="option__label">Size: <span>UK plug</span></legend>
-        <div class="pills">
-          {%- assign plugs = 'EU plug,US plug,UK plug,AU plug' | split: ',' -%}
-          {%- for plug in plugs -%}
-            <label class="pill"><input type="radio" name="demo-size" value="{{ plug }}" {% if plug == 'UK plug' %}checked{% endif %} disabled><span>{{ plug }}</span></label>
-          {%- endfor -%}
+      <div class="option">
+        <label class="option__label" for="DemoSize-{{ section.id }}">Size: <span>UK plug</span></label>
+        <div class="select">
+          <select id="DemoSize-{{ section.id }}" class="select__field" disabled>
+            {%- assign plugs = 'EU plug,US plug,UK plug,AU plug' | split: ',' -%}
+            {%- for plug in plugs -%}<option {% if plug == 'UK plug' %}selected{% endif %}>{{ plug }}</option>{%- endfor -%}
+          </select>
+          {% render 'icon', icon: 'chevron', size: 'chev', class: 'select__chev' %}
         </div>
-      </fieldset>
+      </div>
       <button class="btn btn--primary btn--block" type="button" data-demo-add="Select a product for this section in the theme editor to enable Add to Cart." aria-describedby="DemoHint-{{ section.id }}">{% render 'icon', icon: 'cart' %}<span>Add to Cart</span></button>
       <p class="buybox__hint" id="DemoHint-{{ section.id }}">Select a product for this section in the theme editor to make it shoppable.</p>
       {%- if section.blocks.size > 0 -%}

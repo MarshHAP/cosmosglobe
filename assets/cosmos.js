@@ -123,6 +123,8 @@
     const optionSets = $$('[data-option-index]', form);
 
     const selectedOptions = () => optionSets.map((set) => {
+      const select = $('select', set);
+      if (select) return select.value;
       const checked = $('input:checked', set);
       return checked ? checked.value : null;
     });
