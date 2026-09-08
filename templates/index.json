@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "hero": {
@@ -32,8 +41,8 @@
       ],
       "settings": {
         "eyebrow": "More than a decoration",
-        "heading": "<p>A Brighter<br>Perspective</p>",
-        "text": "A floating globe that inspires curiosity, brings calm to your space, and reminds you how extraordinary our world is.",
+        "heading": "<p>The world</p><p>is yours.</p>",
+        "text": "A floating globe that inspires curiosity, peace, and perspective of our beautiful world.",
         "tag_line_1": "A smaller\nworld",
         "tag_line_2": "A brighter\nyou"
       }
@@ -69,6 +78,7 @@
         "badge_3"
       ],
       "settings": {
+        "product": "",
         "subtitle": "Education Novelty Ball Light Desk Bookshelf Home Decoration",
         "show_rating": true,
         "rating_score": "4.9",
@@ -156,7 +166,8 @@
         "eyebrow": "Beauty in motion",
         "heading": "<p>Bring the World<br>to Your Space</p>",
         "text": "A mesmerising floating globe that spins gently in mid-air, powered by magnetic levitation. With soft, ambient LED lighting, it transforms any room into a place of wonder, focus and inspiration.",
-        "button_label": "Explore COSMOS"
+        "button_label": "Explore COSMOS",
+        "button_link": ""
       }
     },
     "video": {
@@ -193,7 +204,8 @@
         "eyebrow": "No music. Just magic.",
         "heading": "Pure Atmosphere",
         "text": "Our levitating globe is designed for one purpose — to bring beauty, calm and inspiration into your space. No noise, no distractions, just the mesmerising sight of a floating world and a soft, ambient glow.",
-        "play_label": "Play Video"
+        "play_label": "Play Video",
+        "video_url": ""
       }
     },
     "faq": {
