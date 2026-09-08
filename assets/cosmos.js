@@ -243,6 +243,43 @@
     document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !modal.hidden) closeVideo(); });
   }
 
+  /* ---------- Carousels (scroll-snap) ---------- */
+  $$('[data-carousel]').forEach((carousel) => {
+    const track = $('[data-carousel-track]', carousel);
+    const slides = $$('[data-carousel-slide]', carousel);
+    const dots = $$('[data-carousel-dot]', carousel);
+    const prev = $('[data-carousel-prev]', carousel);
+    const next = $('[data-carousel-next]', carousel);
+    if (!track || slides.length < 2) return;
+    const index = () => Math.round(track.scrollLeft / track.clientWidth);
+    const goTo = (i) => {
+      const n = Math.max(0, Math.min(slides.length - 1, i));
+      track.scrollTo({ left: n * track.clientWidth, behavior: 'smooth' });
+    };
+    const sync = () => {
+      const i = index();
+      dots.forEach((d, k) => d.setAttribute('aria-selected', String(k === i)));
+      if (prev) prev.disabled = i === 0;
+      if (next) next.disabled = i === slides.length - 1;
+    };
+    let raf;
+    track.addEventListener('scroll', () => { cancelAnimationFrame(raf); raf = requestAnimationFrame(sync); }, { passive: true });
+    if (prev) prev.addEventListener('click', () => goTo(index() - 1));
+    if (next) next.addEventListener('click', () => goTo(index() + 1));
+    dots.forEach((d) => d.addEventListener('click', () => goTo(Number(d.dataset.carouselDot))));
+    carousel.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') { e.preventDefault(); goTo(index() - 1); }
+      if (e.key === 'ArrowRight') { e.preventDefault(); goTo(index() + 1); }
+    });
+    window.addEventListener('resize', () => goTo(index()));
+    sync();
+    // Theme editor: jump to the slide the merchant clicks in the sidebar.
+    document.addEventListener('shopify:block:select', (e) => {
+      const i = slides.indexOf(e.target);
+      if (i > -1) goTo(i);
+    });
+  });
+
   /* ---------- FAQ: one open per column ---------- */
   $$('.faq__col').forEach((col) => {
     col.addEventListener('toggle', (e) => {
