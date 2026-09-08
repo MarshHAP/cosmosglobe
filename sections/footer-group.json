@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "type": "footer",
   "name": "Footer group",
@@ -5,21 +14,53 @@
     "footer": {
       "type": "footer",
       "blocks": {
-        "instagram": { "type": "social", "settings": { "network": "instagram", "url": "https://instagram.com" } },
-        "tiktok": { "type": "social", "settings": { "network": "tiktok", "url": "https://tiktok.com" } },
-        "youtube": { "type": "social", "settings": { "network": "youtube", "url": "https://youtube.com" } },
-        "pinterest": { "type": "social", "settings": { "network": "pinterest", "url": "https://pinterest.com" } }
+        "instagram": {
+          "type": "social",
+          "settings": {
+            "network": "instagram",
+            "url": "https://instagram.com"
+          }
+        },
+        "tiktok": {
+          "type": "social",
+          "settings": {
+            "network": "tiktok",
+            "url": "https://tiktok.com"
+          }
+        },
+        "youtube": {
+          "type": "social",
+          "settings": {
+            "network": "youtube",
+            "url": "https://youtube.com"
+          }
+        },
+        "pinterest": {
+          "type": "social",
+          "settings": {
+            "network": "pinterest",
+            "url": "https://pinterest.com"
+          }
+        }
       },
-      "block_order": ["instagram", "tiktok", "youtube", "pinterest"],
+      "block_order": [
+        "instagram",
+        "tiktok",
+        "youtube",
+        "pinterest"
+      ],
       "settings": {
-        "tagline": "A brighter world at home",
+        "tagline": "the world is yours",
         "use_anchor_links": true,
         "menu": "footer",
+        "legal_menu": "",
         "show_newsletter": true,
         "newsletter_label": "Join our journey",
         "newsletter_placeholder": "Your email address"
       }
     }
   },
-  "order": ["footer"]
+  "order": [
+    "footer"
+  ]
 }
