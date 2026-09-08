@@ -144,29 +144,50 @@
         "point_1": {
           "type": "point",
           "settings": {
-            "icon": "globe",
-            "text": "Levitates\nMagnetically"
+            "icon": "sensor",
+            "text": "Sensor-Guided\nLevitation"
           }
         },
         "point_2": {
           "type": "point",
           "settings": {
-            "icon": "sun",
-            "text": "Soothing\nLED Light"
+            "icon": "magnet",
+            "text": "Self-Correcting\nMagnetic Field"
           }
         },
         "point_3": {
           "type": "point",
           "settings": {
-            "icon": "home",
-            "text": "Perfect For\nHome & Office"
+            "icon": "spin",
+            "text": "Frictionless\nFree Spin"
           }
         },
         "point_4": {
           "type": "point",
           "settings": {
-            "icon": "heart",
-            "text": "Great For\nAll Ages"
+            "icon": "mute",
+            "text": "Silent\nNo Moving Parts"
+          }
+        },
+        "slide_1": {
+          "type": "slide",
+          "settings": {
+            "fallback": "3-mechanism",
+            "caption": ""
+          }
+        },
+        "slide_2": {
+          "type": "slide",
+          "settings": {
+            "fallback": "4-details",
+            "caption": ""
+          }
+        },
+        "slide_3": {
+          "type": "slide",
+          "settings": {
+            "fallback": "8-specs",
+            "caption": ""
           }
         }
       },
@@ -174,12 +195,15 @@
         "point_1",
         "point_2",
         "point_3",
-        "point_4"
+        "point_4",
+        "slide_1",
+        "slide_2",
+        "slide_3"
       ],
       "settings": {
-        "eyebrow": "Beauty in motion",
-        "heading": "<p>Work in peace.</p>",
-        "text": "A mesmerising floating globe that spins gently in mid-air, powered by magnetic levitation. With soft, ambient LED lighting, it transforms any room into a place of wonder, focus and inspiration.",
+        "eyebrow": "The technology",
+        "heading": "<p>Magnetic Levitation</p>",
+        "text": "Magnets alone can't hold anything in mid-air. An electromagnet in the upper arm lifts the globe while a sensor tracks its position, adjusting the field hundreds of times a second. What looks perfectly still is correcting itself constantly — silently, and far too fast to see.",
         "button_label": "Explore COSMOS",
         "button_link": ""
       }
